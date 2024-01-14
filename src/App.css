@@ -1,0 +1,167 @@
+.App {
+  text-align: center;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.StyleforDarkorLightMode {
+  margin-top: 20px;
+  width: 150px;
+  margin-left: 20px;
+  background-color: goldenrod;
+  border-radius: 30px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+/*
+Header CSS is goes Here
+*/
+.Header {
+  background-color:  rgb(41, 175, 228);
+  height: 50px;
+  padding: 5px;
+}
+
+.cart-div {
+  float: right;
+  margin: 25px;
+  position: relative;
+}
+
+.cart-div img {
+  width: 30px;
+  height: 30px;
+  margin-top: -40px;
+}
+
+
+.cart-div span {
+  background-color: red;
+  position: absolute;
+  z-index: 5;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  color: white;
+  top: -23px;
+  right: 0;
+
+}
+
+.product-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  border: 1px solid;
+  margin: 20px;
+  padding: 20px;
+}
+
+.Header-logo {
+  float: left;
+  margin: 0;
+  padding: 10px;
+  color: white;
+}
+
+.cart-page-container {
+  display: flex;
+}
+
+.cart-table-header {
+  background-color: gray;
+  color: white;
+}
+
+.cart-page-container table {
+  flex: 65%;
+  border-collapse: collapse;
+}
+
+.cart-page-container table td {
+  border: 1px solid #ccc;
+  padding: 15px;
+  
+}
+
+.price-details {
+  flex: 35%;
+  margin: 0px 30px;
+  width: fit-content;
+}
+
+.price-details .adjust-price {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  font-weight: bold;
+
+}
+
+/* Dark and light Mode */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.price-details .adjust-span {
+  font: 20px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media screen and (min-width: 775px) {
+  .btn-container {
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
