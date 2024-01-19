@@ -3,7 +3,9 @@ import Navbar from "../../components/navbar/Navbar";
 import { useEffect, useRef, useState } from "react";
 import SegmentedControl from "./SegmentedControl";
 import { useNavigate } from "react-router-dom";
-import Login from "../login/Login";
+import Signup from "../Signup/Signup";
+
+
 
 
 const User = () => {
@@ -46,9 +48,8 @@ const User = () => {
               
             />
             <p className="selected-item">
-              {<div>  
-              
-            {selectedValue1 == "Create Users"? <Login /> : ""}
+            {<div>  
+            {selectedValue1 == "Create Users"? <Signup /> : ""}
             {selectedValue1 == "Employee"? <h1>Employee Data</h1> : ""} 
             {selectedValue1 == "User"? <h1>Customer Data</h1> : ""}
             {selectedValue1 == "Admin" ? <h1>Admin Data</h1> : ""}

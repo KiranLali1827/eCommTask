@@ -6,6 +6,7 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import User from "./pages/users/user";
+import Signup from "./pages/Signup/Signup";
 
 
 // function App() {
@@ -60,8 +61,10 @@ function App() {
           {/* <Route path="/" element={<Login />} exact /> */}
           <Route path="/" element={<Home />} exact />
           <Route path="/users" element={<User />} exact />
+          <Route path="/Signup" element={<Signup />} exact />
         </Route>
         <Route path="/Login" element={<Login />} exact />
+        
       </Routes>
       {/* <Footer /> */}
     </Router>
