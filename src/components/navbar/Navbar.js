@@ -16,7 +16,7 @@ const Navbar = () => {
         <div className="search">
           {/* <input type="text" placeholder='Search...' />
           <SearchIcon /> */}
-          <Button onClick={alertmsg} style={{backgroundColor:'gray', color:'white'}}>Download Report</Button>
+          {/* <Button onClick={alertmsg} style={{backgroundColor:'gray', color:'white'}}>Download Report</Button> */}
         </div>
         <div className="items">
           {/* <div className="item">

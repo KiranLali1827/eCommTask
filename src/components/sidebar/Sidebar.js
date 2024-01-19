@@ -25,10 +25,8 @@ const Sidebar = () => {
             <NavLink to="/" className="SidebarLinkRemove" activestyle="true">
               <span>Dashboard</span>
             </NavLink>
-            
           </li>
           <p className="title">LISTS MENU</p>
-
           <li>
             <GroupIcon className="icon" />
             <NavLink to="/users" className="SidebarLinkRemove" activestyle="true">

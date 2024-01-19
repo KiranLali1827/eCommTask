@@ -27,7 +27,12 @@ const Chart = () => {
   return (
     <div className='chart'>
       <div>
-      <Button onClick={alertYear} style={{backgroundColor:'gray', color:'white'}}>Select Year</Button>
+      <Button onClick={alertYear} style={{backgroundColor:'gray', color:'white'}}>Select Year</Button> {""}
+      <Button onClick={alertYear} style={{backgroundColor:'gray', color:'white'}}>Download Report</Button> 
+
+      {/* <Button onClick={alertYear} style={{backgroundColor:'gray', color:'white', float:'right'}}>Select Year</Button> 
+      <Button onClick={alertYear} style={{backgroundColor:'gray', color:'white',float:'right',marginRight:'10px'}}>Download Report</Button>  */}
+
       </div>
       <div className="title">Selected Year : 2021 Revenue</div>
         <ResponsiveContainer width="100%" aspect={2/1}>

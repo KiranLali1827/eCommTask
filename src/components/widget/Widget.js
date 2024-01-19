@@ -50,7 +50,7 @@ const Widget = ({type}) => {
         case 'earnings':
             console.log('Switch case earnings')
             data = {
-                title: 'EARNINGS',
+                title: 'DELEVERY',
                 isMoney: true,
                 link: 'View Earnings',
                 icon: (
@@ -63,7 +63,7 @@ const Widget = ({type}) => {
         case 'balance':
             console.log('Switch case balance')
             data = {
-                title: 'BALLANCE',
+                title: 'IN PROGRESS',
                 isMoney: true,
                 link: 'See Details',
                 icon: (

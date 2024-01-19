@@ -4,7 +4,7 @@ import './login.scss'
 const Login = () => {
   return (
     <div><h1>
-      Login</h1></div>
+      Create User build table here</h1></div>
 
   )
 }
