@@ -1,11 +1,11 @@
 .sidebar {
     flex: 1;
-    border: 0.5px solid rgb(230, 227, 227);
+    border: 1.0px solid rgb(230, 227, 227);
     min-height: 100vh;
     background-color: white;
 
     .top {
-        height: 50px;
+        height: 47.9px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -13,7 +13,7 @@
         .logo {
             font-size: 20px;
             font-weight: bold;
-            color: #1f5ce0;
+            color: black;
         }
     }
 
@@ -28,7 +28,7 @@
         ul {
             list-style: none;
             margin: 0;
-            padding: 0;
+            padding: 1;
 
             .title {
                 font-size: 10px;
@@ -50,7 +50,7 @@
 
                 .icon {
                     font-size: 18px;
-                    color: #1f5ce0;
+                    color: grey;
                 }
 
                 span {

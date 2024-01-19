@@ -22,7 +22,10 @@ const Sidebar = () => {
           <p className="title">MAIN MENU</p>
           <li>
             <DashboardIcon className="icon" />
-            <span>Dashboard</span>
+            <NavLink to="/" className="SidebarLinkRemove" activestyle="true">
+              <span>Dashboard</span>
+            </NavLink>
+            
           </li>
           <p className="title">LISTS MENU</p>
 

@@ -21,6 +21,10 @@ const Home = () => {
             <Feature />
             <Chart />
           </div>
+          <br></br>
+          <div>
+            @2024 iCluster All rights
+          </div>
         </div>
     </div>
   )

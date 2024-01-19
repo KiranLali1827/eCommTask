@@ -82,7 +82,6 @@ const Widget = ({type}) => {
   return (
     <div className='widget'>
         <div className='left'>
-            {console.log('Render')}
             <span className='title'>{data.title}</span>
             <span className='counter'>{data.isMoney && '$'} {amount}</span>
             {/* <span onclick onClick={morebtn} className='link'>{data.link}</span> */}

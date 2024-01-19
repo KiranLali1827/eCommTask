@@ -1,22 +1,22 @@
 import './navbar.scss'
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageIcon from '@mui/icons-material/Language';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import MessageIcon from '@mui/icons-material/Message';
+import { Button } from '@mui/material';
 
 const Navbar = () => {
 
   const alertmsg = () => {
-    alert('Hello text msg');
+    alert('Download Report');
   }
 
   return (
     <div className='navbar'>
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder='Search...' />
-          <SearchIcon />
+          {/* <input type="text" placeholder='Search...' />
+          <SearchIcon /> */}
+          <Button onClick={alertmsg} style={{backgroundColor:'gray', color:'white'}}>Download Report</Button>
         </div>
         <div className="items">
           {/* <div className="item">
