@@ -5,7 +5,7 @@ import SegmentedControl from "./SegmentedControl";
 import { useNavigate } from "react-router-dom";
 import Createuser from "./Createuser";
 import Userslist from "./Userslist";
-
+import EmployeeList from './Employeelist'
 
 
 
@@ -31,13 +31,13 @@ const User = () => {
                   ref: useRef(),
                 },
                 {
-                  label: "Employee",
-                  value: "Employee",
+                  label: "User",
+                  value: "User",
                   ref: useRef(),
                 },
                 {
-                  label: "User",
-                  value: "User",
+                  label: "Employee",
+                  value: "Employee",
                   ref: useRef(),
                 }
               ]}
@@ -46,8 +46,8 @@ const User = () => {
             <p className="selected-item">
             {<div>  
             {selectedValue1 == "Create Users"? <Createuser /> : ""}
-            {selectedValue1 == "Employee"? <Userslist />: ""} 
-            {selectedValue1 == "User"? <h1>Customer Data</h1> : ""}
+            {selectedValue1 == "User"? <Userslist />: ""} 
+            {selectedValue1 == "Employee"? <EmployeeList /> : ""}
             </div>}
            
             </p>

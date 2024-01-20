@@ -6,6 +6,7 @@ import User from "./pages/users/user";
 import Signup from "./pages/Signup/Signup";
 import Createuser from "./pages/users/Createuser";
 import Userslist from "./pages/users/Userslist";
+import Employeelist from "./pages/users/Employeelist";
 
 
 // function App() {
@@ -63,6 +64,7 @@ function App() {
           <Route path="/Signup" element={<Signup />} exact />
           <Route path="/Createuser" element={<Createuser />} exact />
           <Route path="/Userslist" element={<Userslist />} exact />
+          <Route path="/Employeelist" element={<Employeelist />} exact />
           
           
         </Route>
