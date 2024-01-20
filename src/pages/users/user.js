@@ -1,9 +1,10 @@
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import SegmentedControl from "./SegmentedControl";
 import { useNavigate } from "react-router-dom";
-import Signup from "../Signup/Signup";
+import Createuser from "./Createuser";
+import Userslist from "./Userslist";
 
 
 
@@ -38,21 +39,15 @@ const User = () => {
                   label: "User",
                   value: "User",
                   ref: useRef(),
-                },
-                {
-                  label: "Admin",
-                  value: "Admin",
-                  ref: useRef(),
-                },
+                }
               ]}
               
             />
             <p className="selected-item">
             {<div>  
-            {selectedValue1 == "Create Users"? <Signup /> : ""}
-            {selectedValue1 == "Employee"? <h1>Employee Data</h1> : ""} 
+            {selectedValue1 == "Create Users"? <Createuser /> : ""}
+            {selectedValue1 == "Employee"? <Userslist />: ""} 
             {selectedValue1 == "User"? <h1>Customer Data</h1> : ""}
-            {selectedValue1 == "Admin" ? <h1>Admin Data</h1> : ""}
             </div>}
            
             </p>

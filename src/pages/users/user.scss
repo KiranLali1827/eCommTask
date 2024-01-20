@@ -105,3 +105,25 @@
   .btn:hover {
     background-color: rgb(41, 175, 228);
   }
+
+  $small: 360px;
+$small_medium: 375px;
+$medium: 900px;
+$isBigScreen: 1824px;
+$isTabletOrMobile: 1224px;
+$isPortrait: '(orientation: portrait)';
+$isRetina: 2dppx;
+$isDesktopOrLaptop: 1224px;
+$isBigScreen: 1824px;
+
+
+.productCust {
+background-color: white;
+width: 80vw;
+margin-left: 40px;
+}
+
+
+
+
+  

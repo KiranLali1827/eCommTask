@@ -2,11 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
-import Single from "./pages/single/Single";
-import New from "./pages/new/New";
 import User from "./pages/users/user";
 import Signup from "./pages/Signup/Signup";
+import Createuser from "./pages/users/Createuser";
+import Userslist from "./pages/users/Userslist";
 
 
 // function App() {
@@ -62,6 +61,10 @@ function App() {
           <Route path="/" element={<Home />} exact />
           <Route path="/users" element={<User />} exact />
           <Route path="/Signup" element={<Signup />} exact />
+          <Route path="/Createuser" element={<Createuser />} exact />
+          <Route path="/Userslist" element={<Userslist />} exact />
+          
+          
         </Route>
         <Route path="/Login" element={<Login />} exact />
         
