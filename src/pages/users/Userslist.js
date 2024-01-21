@@ -9,7 +9,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 
 const columns = [
-  { id: 'name', label: 'SL No', minWidth: 170 },
+  { id: 'name', label: 'SL No', minWidth: 100 },
   { id: 'code', label: 'Name', minWidth: 100 },
   {
     id: 'population',
@@ -23,38 +23,38 @@ const columns = [
     label: 'Phone',
     minWidth: 170,
     align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
+    format: (value) => `+91 ${value}`
   },
   {
     id: 'density',
     label: 'PIN CODE',
     minWidth: 170,
     align: 'right',
-    format: (value) => value.toFixed(2),
+    format: (value) => value,
   },
 ];
 
-function createData(name, code, population, size) {
-  const density = population / size;
+function createData(name, code, population, size,density) {
+  //const density = population / size;
   return { name, code, population, size, density };
 }
 
 const rows = [
-  createData('1', 'Testdemo@gmail.com', 1324171354, 3287263),
-  createData('2', 'Testdemo@gmail.com', 1403500365, 9596961),
-  createData('3', 'Testdemo@gmail.com', 60483973, 301340),
-  createData('4', 'Testdemo@gmail.com', 327167434, 9833520),
-  createData('5', 'Testdemo@gmail.com', 37602103, 9984670),
-  createData('6', 'Testdemo@gmail.com', 25475400, 7692024),
-  createData('7', 'Testdemo@gmail.com', 83019200, 357578),
-  createData('8', 'Testdemo@gmail.com', 4857000, 70273),
-  createData('9', 'Testdemo@gmail.com', 126577691, 1972550),
-  createData('10', 'Testdemo@gmail.com', 126317000, 377973),
-  createData('11', 'Testdemo@gmail.com', 67022000, 640679),
-  createData('12', 'Testdemo@gmail.com', 67545757, 242495),
-  createData('13', 'Testdemo@gmail.com', 146793744, 17098246),
-  createData('14', 'Testdemo@gmail.com', 200962417, 923768),
-  createData('15', 'Testdemo@gmail.com', 210147125, 8515767),
+  createData('1',"ABC", 'Testdemo@gmail.com', 1324171354, 526312),
+  createData('2',"ABC", 'Testdemo@gmail.com', 1403500365, 526312),
+  createData('3', "ABC",'Testdemo@gmail.com', 60483973, 526312),
+  createData('4',"ABC", 'Testdemo@gmail.com', 327167434, 526312),
+  createData('5',"ABC", 'Testdemo@gmail.com', 37602103, 526312),
+  createData('6', "ABC",'Testdemo@gmail.com', 25475400, 526312),
+  createData('7', "ABC",'Testdemo@gmail.com', 83019200, 526312),
+  createData('8', "ABC",'Testdemo@gmail.com', 4857000, 526312),
+  createData('9', "ABC",'Testdemo@gmail.com', 126577691, 526312),
+  createData('10',"ABC", 'Testdemo@gmail.com', 126317000, 526312),
+  createData('11', "ABC",'Testdemo@gmail.com', 67022000, 640679),
+  createData('12',"ABC", 'Testdemo@gmail.com', 67545757, 242495),
+  createData('13',"ABC", 'Testdemo@gmail.com', 146793744, 17098246),
+  createData('14', "ABC",'Testdemo@gmail.com', 200962417, 923768),
+  createData('15', "ABC",'Testdemo@gmail.com', 210147125, 526312),
 ];
 
 export default function Userslist() {
@@ -71,7 +71,7 @@ export default function Userslist() {
   };
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ width: '90%', marginLeft:'5%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
