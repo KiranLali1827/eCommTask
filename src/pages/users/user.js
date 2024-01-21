@@ -10,7 +10,7 @@ import EmployeeList from './Employeelist'
 
 
 const User = () => {
-  const [selectedValue1, setSelectedValue1] = useState("Create Users");
+  const [selectedValue1, setSelectedValue1] = useState("Create Employee");
   const navigate = useNavigate()
 
   return (
@@ -26,13 +26,13 @@ const User = () => {
               controlRef={useRef()}
               segments={[
                 {
-                  label: "Create Users",
-                  value: "Create Users",
+                  label: "Create Employee",
+                  value: "Create Employee",
                   ref: useRef(),
                 },
                 {
-                  label: "User",
-                  value: "User",
+                  label: "Users",
+                  value: "Users",
                   ref: useRef(),
                 },
                 {
@@ -45,8 +45,8 @@ const User = () => {
             />
             <p className="selected-item">
             {<div>  
-            {selectedValue1 == "Create Users"? <Createuser /> : ""}
-            {selectedValue1 == "User"? <Userslist />: ""} 
+            {selectedValue1 == "Create Employee"? <Createuser /> : ""}
+            {selectedValue1 == "Users"? <Userslist />: ""} 
             {selectedValue1 == "Employee"? <EmployeeList /> : ""}
             </div>}
            

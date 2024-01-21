@@ -7,7 +7,7 @@ import Signup from "./pages/Signup/Signup";
 import Createuser from "./pages/users/Createuser";
 import Userslist from "./pages/users/Userslist";
 import Employeelist from "./pages/users/Employeelist";
-
+import Imageupload from "./pages/Products/Imageupload";
 
 // function App() {
 //   return (
@@ -65,6 +65,8 @@ function App() {
           <Route path="/Createuser" element={<Createuser />} exact />
           <Route path="/Userslist" element={<Userslist />} exact />
           <Route path="/Employeelist" element={<Employeelist />} exact />
+          <Route path="/Imageupload" element={<Imageupload />} exact />
+
           
           
         </Route>
