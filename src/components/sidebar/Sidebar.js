@@ -48,7 +48,7 @@ const Sidebar = () => {
           <p className="title">OTHER MENU</p>
           <li>
             <QueryStatsIcon className="icon" />
-            <span>Status</span>
+            <span>Inventory</span>
           </li>
           <li>
             <NotificationsIcon className="icon" />
