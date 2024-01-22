@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Dropdown from "./Dropdown";
+import Dropdown from "../users/Dropdown"
 
 
 
@@ -15,7 +15,7 @@ import Dropdown from "./Dropdown";
 
 const defaultTheme = createTheme();
 
-export default function Createuser() {
+export default function Createproductsection() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -52,49 +52,55 @@ export default function Createuser() {
             onSubmit={handleSubmit}
             sx={{ mt: -5 }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12}>
+           <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="Product_name"
+                  label="SKU"
+                  name="SKU_ID"
+                  placeholder="MAC001"
+                  
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                  id="Product_name"
+                  label="Product Name"
+                  name="Product_name"
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
+                  id="Serial"
+                  label="Serial Number"
+                  name="Serial"
                 />
               </Grid>
+              <Grid item xs={12} sm={6}> 
+                <TextField
+                     required
+                     fullWidth
+                     id="Model"
+                     label="Model Number"
+                     name="Model"
+                />
+              </Grid>
+              <Grid item xs={12}> 
+                <TextField
+                     required
+                     fullWidth
+                     id="Short Description"
+                     label="Short Description"
+                     name="Short Description"
+                />
+              </Grid>
+           
              
               <Grid item xs={12}>
               <Dropdown />
@@ -103,15 +109,7 @@ export default function Createuser() {
               
             </Grid>
 
-            <Button
-              style={{ backgroundColor: "gray" }}
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 4, mb: 10 }}
-            >
-              Create User
-            </Button>
+         
           </Box>
         </Box>
       </Container>

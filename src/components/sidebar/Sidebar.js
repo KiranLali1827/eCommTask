@@ -35,7 +35,10 @@ const Sidebar = () => {
           </li>
           <li>
             <Inventory2Icon className="icon" />
+            <NavLink to="/Addproduct" className="SidebarLinkRemove" activestyle="true">
             <span>Products</span>
+            </NavLink>
+           
           </li>
           <li>
             <ProductionQuantityLimitsIcon className="icon" />
