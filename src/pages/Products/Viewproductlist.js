@@ -46,11 +46,6 @@ function Viewproductlist() {
       <div className="section-title">
         <h1>{loading ? "loading..." : ""}</h1>
 
-        <div className="Filter_Button_Style">
-        {/* <Button onClick={FilterButtonClick}><img className="Clear_Button_Img" src={filterimg} width="50" height= "50px" /></Button> 
-        <Button className="btn" onClick={FilterClearButtonClick}><img className="Filter_Button_Img" src={filter_Clear} width="50" height= "50px" /></Button> */}
-       
-        </div>
        
       </div>
       <section className="DashboardSection">
@@ -60,6 +55,7 @@ function Viewproductlist() {
             return <Productviewdeatils key={details.id} {...details} Obj={details} filterBoolValue={filterBool}/>;
           })}
         </div>
+        {/* Filter */}
         <div className="btn-container">
          
           {loading

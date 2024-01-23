@@ -1,63 +1,41 @@
-.Addproducthome {
-    display: flex;
-
-
-.ImageSection {
-    width:25rem;
-    margin-left: 2vw;
-    border-style: solid;
-    border-color: grey;
-    border-width: thin;
-    display: flex;
-}
-.Products_Paramter_Section {
-   
-    margin-left: 2vw;
-    height: 20rem;
-    border-style: solid;
-    border-color:  grey;
-    border-width: thin;
-    display: flex;
-}
-.Image_Textfields_Parameter_Section {
-    display: flex;
-    margin-top: 2rem;
-   // margin-left: 7rem;
-      margin-left: 0rem;
-    width: min-content;
-}
-.Products_Description_Section {
+.Product_card_Create_Product_Section {
+    background: rgba(255, 255, 255, 0.411);
+    border-radius: var(--radius);
+    box-shadow: var(--light-shadow);
+    padding: 3rem 3.5rem;
+    text-align: center;
+    transition: all 0.3s linear;
+    word-spacing: 0.1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+   // width: 25rem;
+    margin-left: 1rem;
+    width: 30rem;
     
-    margin-top: 10px;
-    margin-left: 2vw;
-    height: 10vw;
+  }
+  .Product_card_Create_Product_Section img {
+    width: 150px;
+    height: 200px;
+    border-radius: 10%;
+    /* object-fit: cover; */
+    margin-bottom: 0.75rem;
     
-}
-
-.Products_Submit_Button_Section {
-    width: 81vw;
-    margin-top: 6px;
-    margin-left: 2vw;
-    height: 5vw;
-    display: flex;
-}
-
-.Add_Product_Top {
-    width: 81vw;
-    margin-top: 5px;
-    margin-left: 2vw;
-    height: 5vw;
-    background-color:'grey'
-}
-.Add_Product_Bottom {
-    width: 81vw;
-    margin-top: 6px;
-    margin-left: 2vw;
-    height: 5vw;
-}
-.Border_Color {
-    border-style: solid;
-    border-color:  grey;
+    /* border: 0.2rem solid #ddd;*/
     
-}
-}
+  }
+  
+  .Product_card h4 {
+    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--clr-grey-5);
+  }
+
+  @media screen and (min-width: 768px) {
+    .ProductCard_Dashboard {
+        display: inline-flex;
+     // background-color: red;
+    }
+  
+  }
+
+  

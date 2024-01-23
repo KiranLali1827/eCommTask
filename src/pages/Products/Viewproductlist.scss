@@ -160,7 +160,7 @@
     letter-spacing: 1.6px;
     font-size: 0.75rem;
     color: white;
-    background: orange;
+    background: #5da2fb;
     border-radius: 10px;
     border-color: transparent;
     text-transform: uppercase;
@@ -188,8 +188,8 @@
     color: white;
   }
   .active-btn {
-    background: orange;
-    color: var(--clr-white);
+    background: #5da2fb;
+    color: white
   }
   
   @media screen and (min-width: 775px) {
