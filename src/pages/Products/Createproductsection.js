@@ -91,7 +91,7 @@ export default function Createproductsection() {
                      name="Model"
                 />
               </Grid>
-              <Grid item xs={12}> 
+              <Grid item xs={12}  sm={6}> 
                 <TextField
                      required
                      fullWidth
@@ -100,11 +100,21 @@ export default function Createproductsection() {
                      name="Short Description"
                 />
               </Grid>
-           
-             
-              <Grid item xs={12}>
+              <Grid item xs={12}  sm={6}>
               <Dropdown />
               </Grid>
+              <Grid item xs={12}> 
+                <TextField
+                     required
+                     fullWidth
+                     id="Description"
+                     label=" Description"
+                     name="Description"
+                />
+              </Grid>
+           
+             
+           
              
               
             </Grid>

@@ -8,6 +8,10 @@ import Userslist from "./pages/users/Userslist";
 import Employeelist from "./pages/users/Employeelist";
 import Imageupload from "./pages/Products/Imageupload";
 import Addproduct from "./pages/Products/Addproduct";
+import Viewproductlist from "./pages/Products/Viewproductlist";
+import Createproductsection from "./pages/Products/Createproductsection";
+import Productdashborad from "./pages/Products/Productdashborad";
+
 
 function App() {
   return (
@@ -26,6 +30,11 @@ function App() {
           <Route path="/Employeelist" element={<Employeelist />} exact />
           <Route path="/Imageupload" element={<Imageupload />} exact />
           <Route path="/Addproduct" element={<Addproduct />} exact />
+          <Route path="/Viewproductlist" element={<Viewproductlist />} exact />
+          <Route path="/Createproductsection" element={<Createproductsection />} exact />
+          <Route path="/Productdashborad" element={<Productdashborad />} exact />
+          
+          
         </Route>
         <Route path="/Login" element={<Login />} exact />
       </Routes>

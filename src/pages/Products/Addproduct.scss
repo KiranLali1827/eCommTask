@@ -1,25 +1,33 @@
+.Addproducthome {
+    display: flex;
+
+
 .ImageSection {
-    width: 25vw;
+    width:25rem;
     margin-left: 2vw;
-    height: 23vw;
     border-style: solid;
     border-color: grey;
     border-width: thin;
+    display: flex;
 }
 .Products_Paramter_Section {
-    width: 54vw;
+   
     margin-left: 2vw;
-    height: 23vw;
+    height: 20rem;
     border-style: solid;
     border-color:  grey;
     border-width: thin;
+    display: flex;
 }
 .Image_Textfields_Parameter_Section {
     display: flex;
-    margin-top: 15px;
+    margin-top: 2rem;
+   // margin-left: 7rem;
+      margin-left: 0rem;
+    width: min-content;
 }
 .Products_Description_Section {
-    width: 81vw;
+    
     margin-top: 10px;
     margin-left: 2vw;
     height: 10vw;
@@ -31,6 +39,7 @@
     margin-top: 6px;
     margin-left: 2vw;
     height: 5vw;
+    display: flex;
 }
 
 .Add_Product_Top {
@@ -50,4 +59,5 @@
     border-style: solid;
     border-color:  grey;
     
+}
 }
