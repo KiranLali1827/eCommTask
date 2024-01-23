@@ -15,12 +15,12 @@ export default function Dropdown() {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Employee Type</InputLabel>
+        <InputLabel id="demo-simple-select-label">Role</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={Type}
-          label="Employee Type"
+          label="Type"
           onChange={handleChange}
         >
           <MenuItem value={10}>Admin</MenuItem>
