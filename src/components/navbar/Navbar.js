@@ -2,7 +2,6 @@ import './navbar.scss'
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import MessageIcon from '@mui/icons-material/Message';
-import { Button } from '@mui/material';
 
 const Navbar = () => {
 

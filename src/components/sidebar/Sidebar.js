@@ -5,10 +5,10 @@ import Inventory2Icon from "@mui/icons-material/Inventory2";
 import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import { NavLink } from "react-router-dom";
+import { MailLockTwoTone } from '@mui/icons-material';
 
 const Sidebar = () => {
   return (
@@ -42,20 +42,32 @@ const Sidebar = () => {
           </li>
           <li>
             <ProductionQuantityLimitsIcon className="icon" />
+            <NavLink to="/Order" className="SidebarLinkRemove" activestyle="true">
             <span>Orders</span>
+            </NavLink>
           </li>
           <li>
             <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
+            <NavLink to="/Deliverydashboard" className="SidebarLinkRemove" activestyle="true">
+             <span>Delivery</span>
+            </NavLink>
+           
+            
           </li>
           <p className="title">OTHER MENU</p>
           <li>
             <QueryStatsIcon className="icon" />
-            <span>Inventory</span>
+            <NavLink to="/Inventorydashboard" className="SidebarLinkRemove" activestyle="true">
+             <span>Inventory</span>
+            </NavLink>
+            
           </li>
           <li>
-            <NotificationsIcon className="icon" />
-            <span>Notifications</span>
+          <MailLockTwoTone className="icon" />
+            <NavLink to="/Invoicedashboard" className="SidebarLinkRemove" activestyle="true">
+             <span>Invoice</span>
+            </NavLink>
+            
           </li>
           {/* <p className="title">SERVICES</p>
             <li>

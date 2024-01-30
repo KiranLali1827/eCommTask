@@ -11,6 +11,10 @@ import Addproduct from "./pages/Products/Addproduct";
 import Viewproductlist from "./pages/Products/Viewproductlist";
 import Createproductsection from "./pages/Products/Createproductsection";
 import Productdashborad from "./pages/Products/Productdashborad";
+import Order from "./pages/Orders/Order";
+import Deliverydashboard from "./pages/Delivery/Deliverydashboard";
+import Inventorydashboard from "./pages/Inventory/Inventorydashboard";
+import Invoicedashboard from "./pages/Invoice/Invoicedashboard";
 
 
 function App() {
@@ -33,6 +37,10 @@ function App() {
           <Route path="/Viewproductlist" element={<Viewproductlist />} exact />
           <Route path="/Createproductsection" element={<Createproductsection />} exact />
           <Route path="/Productdashborad" element={<Productdashborad />} exact />
+          <Route path="/Order" element={<Order />} exact />
+          <Route path="/Deliverydashboard" element={<Deliverydashboard />} exact />
+          <Route path="/Inventorydashboard" element={<Inventorydashboard />} exact />
+          <Route path="/Invoicedashboard" element={<Invoicedashboard />} exact />
           
           
         </Route>
