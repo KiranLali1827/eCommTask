@@ -54,6 +54,13 @@ const Sidebar = () => {
            
             
           </li>
+          <li>
+          <MailLockTwoTone className="icon" />
+            <NavLink to="/Calendardash" className="SidebarLinkRemove" activestyle="true">
+             <span>Calender</span>
+            </NavLink>
+            
+          </li>
           <p className="title">OTHER MENU</p>
           <li>
             <QueryStatsIcon className="icon" />
@@ -62,6 +69,16 @@ const Sidebar = () => {
             </NavLink>
             
           </li>
+
+          <li>
+            <QueryStatsIcon className="icon" />
+            <NavLink to="/Analyticsdashboard" className="SidebarLinkRemove" activestyle="true">
+             <span>Analytics</span>
+            </NavLink>
+            
+          </li>
+
+          
           <li>
           <MailLockTwoTone className="icon" />
             <NavLink to="/Invoicedashboard" className="SidebarLinkRemove" activestyle="true">

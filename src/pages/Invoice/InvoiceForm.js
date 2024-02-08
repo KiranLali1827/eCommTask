@@ -133,7 +133,7 @@ class InvoiceForm extends React.Component {
     return (
     
     
-        <div className="home_invoice">
+        <div className="home">
         <Sidebar />
         <div className="homeContainer">
           <Navbar />

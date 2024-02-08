@@ -15,6 +15,8 @@ import Order from "./pages/Orders/Order";
 import Deliverydashboard from "./pages/Delivery/Deliverydashboard";
 import Inventorydashboard from "./pages/Inventory/Inventorydashboard";
 import Invoicedashboard from "./pages/Invoice/Invoicedashboard";
+import Calendardash from "./pages/Calendar/Calendardash";
+import Analyticsdashboard from "./pages/Analytics/Analyticsdashboard";
 
 
 function App() {
@@ -41,6 +43,9 @@ function App() {
           <Route path="/Deliverydashboard" element={<Deliverydashboard />} exact />
           <Route path="/Inventorydashboard" element={<Inventorydashboard />} exact />
           <Route path="/Invoicedashboard" element={<Invoicedashboard />} exact />
+          <Route path="/Calendardash" element={<Calendardash />} exact />
+          <Route path="/Analyticsdashboard" element={<Analyticsdashboard />} exact />
+          
           
           
         </Route>
