@@ -3,10 +3,6 @@ import "../home/home.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Widget from "../../components/widget/Widget";
-import Feature from "../../components/feature/Feature";
-import Chart from "../../components/chart/Chart";
-import { Button } from "@mui/material";
-import Userlist from "../users/Userslist";
 import { useRef, useState } from "react";
 import SegmentedControl from "../users/SegmentedControl";
 import { Paichart } from "./Paichart";
@@ -57,7 +53,6 @@ const Analyticsdashboard = () => {
                 {selectedValue1 == "Weekly" ? "Weekly" : ""}
                 {selectedValue1 == "Monthly" ? "Monthly" : ""}
                 {selectedValue1 == "Yearly" ? "Yearly" : ""}
-                
               </div>
             }
           </p>
@@ -73,27 +68,24 @@ const Analyticsdashboard = () => {
           {/* <Feature /> */}
           <Paichart />
         </div>
-       
-          {/* <Feature /> */}
-        
-        
+
+        {/* <Feature /> */}
+
         <br></br>
-       
+
         <div className="charts">
-        <Linechart />
+          <Linechart />
         </div>
         <br></br>
         <br></br>
-         <br></br>
         <br></br>
         <br></br>
         <br></br>
-        
+        <br></br>
+
         <div className="charts">
-        <Barchart />
+          <Barchart />
         </div>
-     
-     
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import paginate from "../../pages/Products/Uitils";
 
-const url = "http://localhost:3000/products";
+const url = "http://localhost:3000/products"
 
 export const Fetchapi = () => {
   const [loading, setLoading] = useState(true);

@@ -4,13 +4,26 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useState } from 'react';
 
-export default function Dropdown() {
-  const [Type, setAge] = React.useState('');
 
+// export default function Dropdown() {
+
+ const Dropdown = ({ handleDataChange }) => {
+  // const [Type, setAge] = useState('')
+
+  // const handleChange = (event) => {
+  //   setAge(event.target.value);
+  // };
+
+  // const [inputValue, setInputValue] = useState('Admin');
+  
   const handleChange = (event) => {
-    setAge(event.target.value);
+   // setInputValue(event.target.value);
+    handleDataChange(event.target.value);
+   // console.log("inputValue", event.target.value)
   };
+
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -19,15 +32,16 @@ export default function Dropdown() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={Type}
           label="Type"
           onChange={handleChange}
         >
-          <MenuItem value={10}>Admin</MenuItem>
-          <MenuItem value={20}>Employee</MenuItem>
-          <MenuItem value={30}>User</MenuItem>
+          <MenuItem value={"Admin"}>Admin</MenuItem>
+          <MenuItem value={"Employee"}>Employee</MenuItem>
+          <MenuItem value={"User"}>User</MenuItem>
         </Select>
       </FormControl>
     </Box>
   );
 }
+
+export default Dropdown;

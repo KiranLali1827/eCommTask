@@ -41,6 +41,15 @@ const Sidebar = () => {
            
           </li>
           <li>
+            <Inventory2Icon className="icon" />
+            <NavLink to="/Visitordashboard" className="SidebarLinkRemove" activestyle="true">
+            <span>Visitors</span>
+            </NavLink>
+           
+          </li>
+        
+         
+          <li>
             <ProductionQuantityLimitsIcon className="icon" />
             <NavLink to="/Order" className="SidebarLinkRemove" activestyle="true">
             <span>Orders</span>
@@ -50,9 +59,7 @@ const Sidebar = () => {
             <LocalShippingIcon className="icon" />
             <NavLink to="/Deliverydashboard" className="SidebarLinkRemove" activestyle="true">
              <span>Delivery</span>
-            </NavLink>
-           
-            
+            </NavLink>            
           </li>
           <li>
           <MailLockTwoTone className="icon" />
@@ -67,7 +74,6 @@ const Sidebar = () => {
             <NavLink to="/Inventorydashboard" className="SidebarLinkRemove" activestyle="true">
              <span>Inventory</span>
             </NavLink>
-            
           </li>
 
           <li>
@@ -75,7 +81,6 @@ const Sidebar = () => {
             <NavLink to="/Analyticsdashboard" className="SidebarLinkRemove" activestyle="true">
              <span>Analytics</span>
             </NavLink>
-            
           </li>
 
           
@@ -86,6 +91,16 @@ const Sidebar = () => {
             </NavLink>
             
           </li>
+
+          <li>
+          <MailLockTwoTone className="icon" />
+            <NavLink to="/Testing" className="SidebarLinkRemove" activestyle="true">
+             <span>Testing Tab</span>
+            </NavLink>
+            
+          </li>
+          
+          
           {/* <p className="title">SERVICES</p>
             <li>
               <HealthAndSafetyIcon className='icon' />

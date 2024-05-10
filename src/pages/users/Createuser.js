@@ -7,30 +7,55 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Dropdown from "./Dropdown";
-
-
-
-
+import { useState } from "react";
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
 
 export default function Createuser() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  //Get data for Role
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [error, setError] = useState(false);
+
+  const HandletoGetRole = (roleData) => {
+    setRole(roleData);
+    //console.log("roleData",roleData)
   };
 
-
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (
+      firstName.length == 0 ||
+      lastName.length == 0 ||
+      email.length === 0 ||
+      phone.length === 0 ||
+      password.length === 0 ||
+      role.length === 0
+    ) {
+      setError(true);
+    } else {
+      console.log("First Name: ", firstName, "\nLast Name: ", lastName);
+    }
   };
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+
+  //   let mydata = {
+  //     firstname: data.get("lastName"),
+  //     lastname: data.get("firstName"),
+  //     email: data.get("email"),
+  //     password: data.get("password"),
+  //     role: role
+  //   };
+  //   console.log(mydata);
+  // };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -62,8 +87,14 @@ export default function Createuser() {
                   id="firstName"
                   label="First Name"
                   autoFocus
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
               </Grid>
+              {error && firstName.length <= 0 ? (
+                <label className="Errorlabel">First Name can't be Empty</label>
+              ) : (
+                ""
+              )}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -72,8 +103,14 @@ export default function Createuser() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
+                  onChange={(e) => setLastName(e.target.value)}
                 />
               </Grid>
+              {error && lastName.length <= 0 ? (
+                <label className="Errorlabel">Last Name can't be Empty</label>
+              ) : (
+                ""
+              )}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -82,8 +119,30 @@ export default function Createuser() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </Grid>
+              {error && email.length <= 0 ? (
+                <label className="Errorlabel">Email can't be Empty</label>
+              ) : (
+                ""
+              )}
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="phone"
+                  label="phone"
+                  name="phone"
+                  autoComplete="phone"
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </Grid>
+              {error && phone.length <= 0 ? (
+                <label className="Errorlabel">Phone can't be Empty</label>
+              ) : (
+                ""
+              )}
               <Grid item xs={12}>
                 <TextField
                   required
@@ -93,16 +152,26 @@ export default function Createuser() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </Grid>
-             
+              {error && password.length <= 0 ? (
+                <label className="Errorlabel">password can't be Empty</label>
+              ) : (
+                ""
+              )}
               <Grid item xs={12}>
-              <Dropdown />
+                <Dropdown handleDataChange={HandletoGetRole} />
+                <div>
+                  <p>role : {role}</p>
+                </div>
               </Grid>
-             
-              
             </Grid>
-
+            {error && role.length <= 0 ? (
+                <label className="Errorlabel">Please select the role</label>
+              ) : (
+                ""
+              )}
             <Button
               style={{ backgroundColor: "gray" }}
               type="submit"
