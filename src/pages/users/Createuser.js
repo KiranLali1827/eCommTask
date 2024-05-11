@@ -10,9 +10,13 @@ import Dropdown from "./Dropdown";
 import { useState } from "react";
 // TODO remove, this demo shouldn't need to reset the theme.
 
+
 const defaultTheme = createTheme();
 
 export default function Createuser() {
+
+  const apiKey = process.env.REACT_APP_API_URL;
+
   //Get data for Role
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -39,9 +43,66 @@ export default function Createuser() {
     ) {
       setError(true);
     } else {
-      console.log("First Name: ", firstName, "\nLast Name: ", lastName);
+      let mydata = {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        phone: phone,
+        password: password,
+        role: role,
+      };
+      console.log("Create user data : ", mydata);
+      loginUser(mydata);
     }
   };
+
+  function loginUser(userdata) {
+    console.log("apiKey",(`${apiKey}/Createuser`));
+    let data = userdata;
+     console.warn(process.env.REACT_APP_API_URL);
+    fetch(`${apiKey}/Createuser`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((resp) => {
+      // console.warn("resp",resp);;
+      resp.json().then((respData) => {
+        console.warn("result", respData.result.status);
+        if (respData.result.status === 200) {
+          cleartextfield(respData)
+        } else {
+          alert("User creation failed, please try again later")
+        }
+      });
+    });
+  }
+
+  const cleartextfield = (resp) => {
+   alert(resp.result.msg)
+  }
+
+  // async function loginUser(userdata) {
+  //   var resp;
+  //   return fetch("http://localhost:2000/Createuser", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(userdata)
+  //   }).then(response => {
+  //     resp = response;
+  //     return response.json();
+  //   }).then(json => {
+  //     return {
+  //       response: resp,
+  //       json: json,
+  //       error: !resp.ok
+  //     };
+  //   });
+  // }
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -61,6 +122,7 @@ export default function Createuser() {
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
+
 
         <Box
           sx={{
@@ -168,10 +230,10 @@ export default function Createuser() {
               </Grid>
             </Grid>
             {error && role.length <= 0 ? (
-                <label className="Errorlabel">Please select the role</label>
-              ) : (
-                ""
-              )}
+              <label className="Errorlabel">Please select the role</label>
+            ) : (
+              ""
+            )}
             <Button
               style={{ backgroundColor: "gray" }}
               type="submit"
