@@ -17,6 +17,7 @@ function Addproduct() {
   ];
   return (
     <div className="ProductCard_Dashboard">
+    <div >
       <article className="Product_card_Create_Product_Section">
         {filtdata.map((item, index) => {
           return (
@@ -37,6 +38,19 @@ function Addproduct() {
       </article>
 
       <article className="Product_card_Create_Product_Section">
+        <>
+          <h3>Add Specification</h3>
+          <Createproductsection />
+          <br></br>
+          <a className="btn"> Add to Cart </a>
+        </>
+      </article>
+
+     
+      
+    </div>
+    <br></br>
+    <article className="Product_card_Create_Product_Section">
         <>
           <h3>Add Product Details</h3>
           <Createproductsection />

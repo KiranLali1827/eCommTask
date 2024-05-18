@@ -4,7 +4,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useState } from 'react';
 
 
 // export default function Dropdown() {
@@ -28,7 +27,7 @@ import { useState } from 'react';
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Role</InputLabel>
+        <InputLabel id="demo-simple-select-label">Role *</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

@@ -41,6 +41,10 @@
 
 //   export default Parent;
 
+
+
+
+/*
 //Form Validation
 import React, { useState } from "react";
 import "../Testingclass/Testing.scss";
@@ -91,4 +95,52 @@ function Testing() {
     </>
   );
 }
+export default Testing;
+*/
+
+//Fetch data from server and set to useState 
+
+import React, { useEffect, useState } from 'react';
+
+const Testing = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('https://dummy.restapiexample.com/api/v1/employees'); // Replace with your API endpoint
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const data = await response.json();
+      setData(data);
+      setLoading(false);
+    } catch (error) {
+      setError(error.message);
+      setLoading(false);
+    }
+  };
+
+ return (
+  <div>
+    {loading ? (
+      <p>Loading...</p>
+    ) : error ? (
+      <p>Error: {error}</p>
+    ) : (
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+    )}
+  </div>
+);
+};
+
 export default Testing;

@@ -7,7 +7,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { grey } from '@mui/material/colors';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
@@ -68,8 +67,8 @@ export default function Employeelist() {
               <StyledTableCell style={{textAlign:'center'}} >{row.fat}</StyledTableCell>
               <StyledTableCell style={{textAlign:'center'}}>{row.carbs}</StyledTableCell>
               <StyledTableCell style={{textAlign:'center'}}>{row.protein}</StyledTableCell>
-              <StyledTableCell style={{textAlign:'center'}} >{row.protein}</StyledTableCell>
-              <StyledTableCell style={{textAlign:'center'}}>{row.protein}</StyledTableCell>
+              <StyledTableCell style={{textAlign:'center'}}><button style={{backgroundColor:'skyblue'}}>Update</button></StyledTableCell>
+              <StyledTableCell style={{textAlign:'center'}}><button style={{backgroundColor:'red', color:'white'}}>Delete</button></StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
