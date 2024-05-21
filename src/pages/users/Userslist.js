@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { fetchData } from "../../components/Constants/Constant";
 import TablePagination from "@mui/material/TablePagination";
-import { useRef } from "react";
+import Edituser from "./Edituser";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
@@ -34,7 +34,7 @@ export default function Userslist() {
   const [userObject, setUserObject] = useState([]);
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -43,6 +43,24 @@ export default function Userslist() {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  // const handleEditUserDetails = (event, someParameter) => {
+  //   alert(someParameter.firstname)
+  //   console.log("rowInfo is", someParameter);
+
+  // };
+
+  const [show, setShow] = useState(false);
+  const [selectedData, setSelectedData] = useState([]);
+
+  const handleEditUserDetails = (event, someParameter) => {
+    setSelectedData(someParameter);
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
   };
 
   useEffect(() => {
@@ -70,23 +88,14 @@ export default function Userslist() {
     });
   }, [loading]);
 
-  // function SlNo(i) {
-  //   console.log("The sl no is ", i)
-  //   oldText.current = 2
-  //   return oldText.current + 1
+  //   function HandleDeleteButton(event, someParameter){
+  //     //do with event
+  //     alert(someParameter)
   // }
 
-
-  
-
-//   function HandleDeleteButton(event, someParameter){
-//     //do with event
-//     alert(someParameter)
-// }
-
-const HandleDeleteButton = (event, someParameter) => {
-  alert(someParameter)
-}
+  const HandleDeleteButton = (event, someParameter) => {
+    alert(someParameter);
+  };
 
   return (
     <div>
@@ -145,7 +154,7 @@ const HandleDeleteButton = (event, someParameter) => {
                 >
                   Phone
                 </StyledTableCell>
-                <StyledTableCell
+                {/* <StyledTableCell
                   style={{
                     backgroundColor: "grey",
                     color: "white",
@@ -153,6 +162,15 @@ const HandleDeleteButton = (event, someParameter) => {
                   }}
                 >
                   Role
+                </StyledTableCell> */}
+                <StyledTableCell
+                  style={{
+                    backgroundColor: "grey",
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  Address
                 </StyledTableCell>
                 <StyledTableCell
                   style={{
@@ -161,7 +179,7 @@ const HandleDeleteButton = (event, someParameter) => {
                     textAlign: "center",
                   }}
                 >
-                  Update
+                  Edit 
                 </StyledTableCell>
                 <StyledTableCell
                   style={{
@@ -204,11 +222,19 @@ const HandleDeleteButton = (event, someParameter) => {
                     <StyledTableCell style={{ textAlign: "center" }}>
                       {row.phone}
                     </StyledTableCell>
-                    <StyledTableCell style={{ textAlign: "center" }}>
+                    {/* <StyledTableCell style={{ textAlign: "center" }}>
                       {row.role}
+                    </StyledTableCell> */}
+                    <StyledTableCell style={{ textAlign: "center" }}>
+                      {row.address}
                     </StyledTableCell>
                     <StyledTableCell style={{ textAlign: "center" }}>
-                      <button style={{ backgroundColor: "skyblue" }}>
+                      <button
+                        style={{ backgroundColor: "green", color: "white" }}
+                        onClick={(e) => {
+                          handleEditUserDetails(e, row);
+                        }}
+                      >
                         Update
                       </button>
                     </StyledTableCell>
@@ -217,7 +243,7 @@ const HandleDeleteButton = (event, someParameter) => {
                         style={{ backgroundColor: "red", color: "white" }}
                         onClick={(e) => {
                           HandleDeleteButton(e, row._id);
-                       }}
+                        }}
                       >
                         Delete
                       </button>
@@ -227,7 +253,7 @@ const HandleDeleteButton = (event, someParameter) => {
             </TableBody>
           </Table>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 100]}
+            rowsPerPageOptions={[4, 7, 10, 100]}
             component="div"
             count={userObject.length}
             rowsPerPage={rowsPerPage}
@@ -235,6 +261,7 @@ const HandleDeleteButton = (event, someParameter) => {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
+          {show && <Edituser details={selectedData} handleClose={hideModal} />}
         </TableContainer>
       )}
     </div>

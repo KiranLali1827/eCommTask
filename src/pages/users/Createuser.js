@@ -22,6 +22,7 @@ export default function Createuser() {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
+  const [address, setAddress] = useState("");
   const [error, setError] = useState(false);
 
   const HandletoGetRole = (roleData) => {
@@ -40,6 +41,7 @@ export default function Createuser() {
         phone.length === 0 ||
         password.length === 0 ||
         role.length === 0 ||
+        address.length === 0 ||
         checkemail === false
       ) {
         setError(true);
@@ -50,6 +52,7 @@ export default function Createuser() {
           email: email,
           phone: phone,
           password: password,
+          address: address,
           role: role,
         };
         loginUser(mydata);
@@ -62,6 +65,7 @@ export default function Createuser() {
         phone.length === 0 ||
         password.length === 0 ||
         role.length === 0 ||
+        address.length === 0 ||
         checkemail === false
       ) {
         setError(true);
@@ -100,6 +104,7 @@ export default function Createuser() {
     setEmail("");
     setPassword("");
     setPhone("");
+    setAddress("");
     //setRole('');
     setError(false);
   };
@@ -233,7 +238,7 @@ export default function Createuser() {
                     const re = /^[0-9\b]+$/;
                     // if value is not blank, then test the regex
                     if (e.target.value.length > 10) {
-                      alert("Mobile number should not be more than 10 numbers")
+                      alert("Mobile number should not be more than 10 numbers");
                     } else if (
                       e.target.value === "" ||
                       re.test(e.target.value)
@@ -248,6 +253,25 @@ export default function Createuser() {
               ) : (
                 ""
               )}
+
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="Address"
+                  value={address}
+                  label="Address"
+                  name="Address"
+                  autoComplete="Address"
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </Grid>
+              {error && address.length <= 0 ? (
+                <label className="Errorlabel">Address can't be Empty</label>
+              ) : (
+                ""
+              )}
+
               <Grid item xs={12}>
                 <TextField
                   required
