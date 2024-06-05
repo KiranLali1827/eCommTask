@@ -5,6 +5,7 @@ import Widget from '../../components/widget/Widget'
 import Feature from '../../components/feature/Feature'
 import Chart from '../../components/chart/Chart'
 
+
 const Home = () => {
   return (
     <div className="home">

@@ -1,8 +1,13 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { Button, Grid } from "@mui/material";
-import Dropdown from "./Dropdown";
 import { useState } from "react";
+import {
+  APIKey,
+  checkemailValidOrNot,
+  update,
+} from "../../components/Constants/Constant";
+// import Dropdown from "./Dropdown";
 
 const Edituser = ({ handleClose, details }) => {
   const [firstName, setFirstName] = useState(details.firstname);
@@ -11,7 +16,83 @@ const Edituser = ({ handleClose, details }) => {
   const [phone, setPhone] = useState(details.phone);
   const [role, setRole] = useState(details.role);
   const [address, setAddress] = useState(details.address);
+  const [_id, setID] = useState(details._id);
   const [error, setError] = useState(false);
+
+  const updateuser = (e, someParameter) => {
+    // alert(`Hello ${_id} & ${firstName}`);
+    // console.log(`The url is : ${APIKey}${update}/${_id}`)
+
+    const checkemail = checkemailValidOrNot(email);
+    e.preventDefault();
+    if (checkemail) {
+      if (
+        firstName.length === 0 ||
+        lastName.length === 0 ||
+        checkemail === false ||
+        phone.length === 0 ||
+        address.length === 0
+        //  role.length === 0
+      ) {
+        setError(true);
+      } else {
+        let User_Updated_Data = {
+          firstname: firstName,
+          lastname: lastName,
+          email: email,
+          phone: phone,
+          address: address,
+          // role: role,
+        };
+        CallUpdateUserApi(User_Updated_Data);
+      }
+    } else {
+      if (
+        firstName.length === 0 ||
+        lastName.length === 0 ||
+        checkemail === false ||
+        phone.length === 0 ||
+        address.length === 0 ||
+        role.length === 0
+      ) {
+        setError(true);
+      } else {
+      }
+      alert("Please enter valid email");
+      setEmail("");
+    }
+
+    // handleClose();
+  };
+
+  function CallUpdateUserApi(userdata) {
+    // console.log("The user edited data is", userdata);
+
+    fetch(`${APIKey}${update}/${_id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userdata),
+    }).then((resp) => {
+      resp
+        .json()
+        .then((data) => (data.result.acknowledged ? clearTextfields() : alert("Error while updating user")))
+        .catch((err) => alert(err));
+    });
+  }
+
+  const clearTextfields = () => {
+    alert("User updated successfully") 
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setPhone("");
+    setAddress("");
+    //setRole('');
+    setError(false);
+    handleClose()
+  }
 
   return (
     <div className="modal display-block">
@@ -46,7 +127,16 @@ const Edituser = ({ handleClose, details }) => {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
+                <br></br>
+                {error && firstName.length <= 0 ? (
+                  <label className="Errorlabel">
+                    First Name can't be Empty
+                  </label>
+                ) : (
+                  ""
+                )}
               </Grid>
+
               <Grid item xs={4}>
                 <h5>Lastname</h5>
                 <TextField
@@ -55,6 +145,12 @@ const Edituser = ({ handleClose, details }) => {
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                 />
+                <br></br>
+                {error && lastName.length <= 0 ? (
+                  <label className="Errorlabel">Last Name can't be Empty</label>
+                ) : (
+                  ""
+                )}
               </Grid>
               <Grid item xs={4}>
                 <h5>Email</h5>
@@ -64,6 +160,12 @@ const Edituser = ({ handleClose, details }) => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                <br></br>
+                {error && email.length <= 0 ? (
+                  <label className="Errorlabel">Email can't be Empty</label>
+                ) : (
+                  ""
+                )}
               </Grid>
             </Grid>
           </div>
@@ -76,24 +178,46 @@ const Edituser = ({ handleClose, details }) => {
                   id="outlined-basic"
                   variant="outlined"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => {
+                    const re = /^[0-9\b]+$/;
+                    // if value is not blank, then test the regex
+                    if (e.target.value.length > 10) {
+                      alert("Mobile number should not be more than 10 numbers");
+                    } else if (
+                      e.target.value === "" ||
+                      re.test(e.target.value)
+                    ) {
+                      setPhone(e.target.value);
+                    }
+                  }}
                 />
+                <br></br>
+                {error && phone.length <= 0 ? (
+                  <label className="Errorlabel">
+                    Phone number can't be Empty
+                  </label>
+                ) : (
+                  ""
+                )}
               </Grid>
+
               {/* <Grid item xs={4}>
-                <h5>Firstname</h5>
-                <div style={{width:'180px', marginLeft:'87px'}}>
-                <Dropdown />
-                </div>
-              </Grid> */}
-              <Grid item xs={4}>
                 <h5>Role</h5>
-                <TextField
+
+                <Dropdown
                   id="outlined-basic"
                   variant="outlined"
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
                 />
-              </Grid>
+                <br></br>
+                {error && role.length <= 0 ? (
+                  <label className="Errorlabel">Role can't be Empty</label>
+                ) : (
+                  ""
+                )}
+              </Grid> */}
+
               <Grid item xs={4}>
                 <h5>Address</h5>
                 <TextField
@@ -103,10 +227,14 @@ const Edituser = ({ handleClose, details }) => {
                   onChange={(e) => setAddress(e.target.value)}
                 />
                 <br></br>
+                {error && address.length <= 0 ? (
+                  <label className="Errorlabel">Address can't be Empty</label>
+                ) : (
+                  ""
+                )}
                 <br></br>
-                <h5>
-                  {address}
-                </h5>
+                <br></br>
+                <h5 style={{ color: "red" }}>{`Address : ${address}`}</h5>
               </Grid>
             </Grid>
           </div>
@@ -136,7 +264,7 @@ const Edituser = ({ handleClose, details }) => {
           {/* <button onClick={handleClose}>close</button> */}
 
           <Button
-            onClick={handleClose}
+            // onClick={(e)=>{updateuser(e._id)}}
             style={{
               backgroundColor: "green",
               width: "200px",
@@ -145,6 +273,9 @@ const Edituser = ({ handleClose, details }) => {
             type="submit"
             variant="contained"
             sx={{ mt: 2, mb: 8 }}
+            onClick={(e) => {
+              updateuser(e, e._id);
+            }}
           >
             Update User
           </Button>

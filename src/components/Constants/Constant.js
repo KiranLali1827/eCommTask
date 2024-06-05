@@ -1,5 +1,17 @@
 export const APIKey = process.env.REACT_APP_API_URL;
+export const update = "/update"
 
+
+
+export function checkemailValidOrNot(email) {
+  let re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(email)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 export const fetchData = async () => {
 

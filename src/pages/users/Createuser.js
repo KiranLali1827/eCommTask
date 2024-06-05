@@ -8,7 +8,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Dropdown from "./Dropdown";
 import { useState } from "react";
-import { APIKey } from "../../components/Constants/Constant";
+import { APIKey, checkemailValidOrNot } from "../../components/Constants/Constant";
 // TODO remove, this demo shouldn't need to reset the theme.
 import "../users/Createuser.scss";
 
@@ -75,6 +75,7 @@ export default function Createuser() {
       setEmail("");
     }
   };
+
 
   function loginUser(userdata) {
     let data = userdata;
@@ -143,15 +144,7 @@ export default function Createuser() {
   //   console.log(mydata);
   // };
 
-  function checkemailValidOrNot(email) {
-    let re =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(email)) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
 
   return (
     <ThemeProvider theme={defaultTheme}>

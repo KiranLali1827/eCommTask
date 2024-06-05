@@ -49,12 +49,12 @@ function Viewproductlist() {
        
       </div>
       <section className="DashboardSection">
-        {console.log("handleFilterStyle", handleFilterStyle)}
-        <div className={handleFilterStyle}>
+        {console.log("handleFilterStyle", details)}
+        {/* <div className={handleFilterStyle}>
           {details.map((details) => {
             return <Productviewdeatils key={details.id} {...details} Obj={details} filterBoolValue={filterBool}/>;
           })}
-        </div>
+        </div> */}
         {/* Filter */}
         <div className="btn-container">
          
