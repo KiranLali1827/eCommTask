@@ -9,9 +9,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import { useState } from "react";
-import { fetchData } from "../../components/Constants/Constant";
+import { Deleteuserdata, Getuserdata } from "../../components/Constants/Constant";
 import TablePagination from "@mui/material/TablePagination";
 import Edituser from "./Edituser";
+
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
@@ -36,6 +37,20 @@ export default function Userslist() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(4);
 
+  const refreshdataonceupdated = (newData) => {
+    console.log("The refresh value is", newData);
+    if (newData) {
+      Getuserdata().then((employees) => {
+        setUserObject(employees.User);
+        if (employees) {
+          setLoading(false);
+        }
+      });
+    } else {
+      alert("Do not call refresh api")
+    }
+  };
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -52,11 +67,41 @@ export default function Userslist() {
   // };
 
   const [show, setShow] = useState(false);
-  const [selectedData, setSelectedData] = useState([]);
+  const [editUserdata, seteditUserdata] = useState([]);
 
   const handleEditUserDetails = (event, someParameter) => {
-    setSelectedData(someParameter);
+    seteditUserdata(someParameter);
     setShow(true);
+  };
+
+  const handleDeleteUserDetails = (event, someParameter) => {
+    deleteAPiCallInEmployee(someParameter);
+  };
+
+
+  const deleteAPiCallInEmployee = (someParameter) => {
+    Deleteuserdata(someParameter).then((employees) => {
+      //console.log("The data");
+      //setUserObject(employees)
+      //setUserObject(employees.User);
+
+      //    const items = employees.User.map( (data, index) => (
+
+      //    setUserObject({
+      //     firstname: data.firstname,
+      //     lastname: data.lastname,
+      //     email: data.email,
+      //     password: data.password,
+      //     phone: data.phone,
+      //     role: data.role
+      //   })
+      //   // console.log(items)
+      // ))
+
+      // if (employees) {
+      //   setLoading(false);
+      // }
+    });
   };
 
   const hideModal = () => {
@@ -64,7 +109,7 @@ export default function Userslist() {
   };
 
   useEffect(() => {
-    fetchData().then((employees) => {
+    Getuserdata().then((employees) => {
       // console.log("The data, ", employees.User[0].firstname)
       //setUserObject(employees)
       setUserObject(employees.User);
@@ -93,10 +138,7 @@ export default function Userslist() {
   //     alert(someParameter)
   // }
 
-  const HandleDeleteButton = (event, someParameter) => {
-    alert(someParameter);
-  };
-
+ 
   return (
     <div>
       {loading ? (
@@ -179,7 +221,7 @@ export default function Userslist() {
                     textAlign: "center",
                   }}
                 >
-                  Edit 
+                  Edit
                 </StyledTableCell>
                 <StyledTableCell
                   style={{
@@ -242,7 +284,7 @@ export default function Userslist() {
                       <button
                         style={{ backgroundColor: "red", color: "white" }}
                         onClick={(e) => {
-                          HandleDeleteButton(e, row._id);
+                          handleDeleteUserDetails(e, row._id);
                         }}
                       >
                         Delete
@@ -261,7 +303,13 @@ export default function Userslist() {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
-          {show && <Edituser details={selectedData} handleClose={hideModal} />}
+          {show && (
+            <Edituser
+              details={editUserdata}
+              handleClose={hideModal}
+              refresh_data_callback={refreshdataonceupdated}
+            />
+          )}
         </TableContainer>
       )}
     </div>

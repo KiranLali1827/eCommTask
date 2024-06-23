@@ -88,7 +88,10 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect } from "react";
 import { useState } from "react";
-import { fetchData } from "../../components/Constants/Constant";
+import {
+  Getuserdata,
+  Deleteuserdata,
+} from "../../components/Constants/Constant";
 import TablePagination from "@mui/material/TablePagination";
 import Edituser from "./Edituser";
 
@@ -133,9 +136,39 @@ export default function Employeelist() {
   const [show, setShow] = useState(false);
   const [selectedData, setSelectedData] = useState([]);
 
-  const handleEditUserDetails = (event, someParameter) => {
+  const handleEditEmployeeDetails = (event, someParameter) => {
     setSelectedData(someParameter);
     setShow(true);
+  };
+
+  const HandleDeleteEmployeeButton = (event, someParameter) => {
+    // alert(someParameter);
+    deleteAPiCallInEmployee();
+  };
+
+  const deleteAPiCallInEmployee = () => {
+    Deleteuserdata("Id pass here").then((employees) => {
+      console.log("The data");
+      //setUserObject(employees)
+      //setUserObject(employees.User);
+
+      //    const items = employees.User.map( (data, index) => (
+
+      //    setUserObject({
+      //     firstname: data.firstname,
+      //     lastname: data.lastname,
+      //     email: data.email,
+      //     password: data.password,
+      //     phone: data.phone,
+      //     role: data.role
+      //   })
+      //   // console.log(items)
+      // ))
+
+      // if (employees) {
+      //   setLoading(false);
+      // }
+    });
   };
 
   const hideModal = () => {
@@ -143,7 +176,7 @@ export default function Employeelist() {
   };
 
   useEffect(() => {
-    fetchData().then((employees) => {
+    Getuserdata().then((employees) => {
       // console.log("The data, ", employees.User[0].firstname)
       //setUserObject(employees)
       setUserObject(employees.User);
@@ -171,10 +204,6 @@ export default function Employeelist() {
   //     //do with event
   //     alert(someParameter)
   // }
-
-  const HandleDeleteButton = (event, someParameter) => {
-    alert(someParameter);
-  };
 
   return (
     <div>
@@ -311,7 +340,7 @@ export default function Employeelist() {
                       <button
                         style={{ backgroundColor: "green", color: "white" }}
                         onClick={(e) => {
-                          handleEditUserDetails(e, row);
+                          handleEditEmployeeDetails(e, row);
                         }}
                       >
                         Update
@@ -321,7 +350,7 @@ export default function Employeelist() {
                       <button
                         style={{ backgroundColor: "red", color: "white" }}
                         onClick={(e) => {
-                          HandleDeleteButton(e, row._id);
+                          HandleDeleteEmployeeButton(e, row._id);
                         }}
                       >
                         Delete

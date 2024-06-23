@@ -4,12 +4,14 @@ import { Button, Grid } from "@mui/material";
 import { useState } from "react";
 import {
   APIKey,
+  Getuserdata,
   checkemailValidOrNot,
   update,
 } from "../../components/Constants/Constant";
+
 // import Dropdown from "./Dropdown";
 
-const Edituser = ({ handleClose, details }) => {
+const Edituser = ({ handleClose, details, refresh_data_callback }) => {
   const [firstName, setFirstName] = useState(details.firstname);
   const [lastName, setLastName] = useState(details.lastname);
   const [email, setEmail] = useState(details.email);
@@ -18,6 +20,17 @@ const Edituser = ({ handleClose, details }) => {
   const [address, setAddress] = useState(details.address);
   const [_id, setID] = useState(details._id);
   const [error, setError] = useState(false);
+
+  
+
+  // const send_data_back_to_parent = () => {
+  //   setRefresh_check(inputValue);
+  // };
+
+  const send_data_back_to_parent = (data) => {
+    refresh_data_callback(data)
+  };
+
 
   const updateuser = (e, someParameter) => {
     // alert(`Hello ${_id} & ${firstName}`);
@@ -77,13 +90,17 @@ const Edituser = ({ handleClose, details }) => {
     }).then((resp) => {
       resp
         .json()
-        .then((data) => (data.result.acknowledged ? clearTextfields() : alert("Error while updating user")))
+        .then((data) =>
+          data.result.acknowledged
+            ? clearTextfields()
+            : alert("Error while updating user")
+        )
         .catch((err) => alert(err));
     });
   }
 
   const clearTextfields = () => {
-    alert("User updated successfully") 
+    alert("User updated successfully");
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -91,8 +108,9 @@ const Edituser = ({ handleClose, details }) => {
     setAddress("");
     //setRole('');
     setError(false);
-    handleClose()
-  }
+    send_data_back_to_parent(true)
+    handleClose();
+  };
 
   return (
     <div className="modal display-block">
@@ -110,16 +128,6 @@ const Edituser = ({ handleClose, details }) => {
           <div>
             <Grid container spacing={4}>
               <Grid item xs={4}>
-                {/* <TextField
-                  id="re_ps"
-                  label="PS"
-                  // value={this.state.re_pe_value}
-                  // onChange={this.re_ps_handleChange('value')}
-                  margin="normal"
-                  type="number"
-                  variant="filled"
-                  style={{ paddingRight: "20px", width: "170px" }}
-                /> */}
                 <h5>Firstname</h5>
                 <TextField
                   id="outlined-basic"
