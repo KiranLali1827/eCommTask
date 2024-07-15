@@ -6,6 +6,7 @@ import SegmentedControl from "../users/SegmentedControl";
 import Viewproductlist from "./Viewproductlist";
 import Dropdown from "../users/Dropdown";
 import Addproduct from '../Products/Addproduct'
+import Testing from "../../components/Testingclass/Testing";
 
 
 
@@ -52,9 +53,9 @@ const Productdashborad = () => {
             />
             <p className="selected-item">
             {<div>  
-            {selectedValue1 == "Add Product"? <Addproduct /> : ""}
-            {selectedValue1 == "View Product"? <Viewproductlist />: ""}
-            {selectedValue1 == "Filter"? <Dropdown />: ""}
+            {selectedValue1 === "Add Product"? <Testing /> : ""}
+            {selectedValue1 === "View Product"? <Viewproductlist />: ""}
+            {selectedValue1 === "Filter"? <Dropdown />: ""}
             </div>}
          
             </p>

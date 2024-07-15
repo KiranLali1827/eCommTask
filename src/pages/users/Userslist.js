@@ -68,6 +68,7 @@ export default function Userslist() {
 
   const [show, setShow] = useState(false);
   const [editUserdata, seteditUserdata] = useState([]);
+  const [deletedUser, setdeletedUser] = useState(false)
 
   const handleEditUserDetails = (event, someParameter) => {
     seteditUserdata(someParameter);
@@ -81,26 +82,7 @@ export default function Userslist() {
 
   const deleteAPiCallInEmployee = (someParameter) => {
     Deleteuserdata(someParameter).then((employees) => {
-      //console.log("The data");
-      //setUserObject(employees)
-      //setUserObject(employees.User);
-
-      //    const items = employees.User.map( (data, index) => (
-
-      //    setUserObject({
-      //     firstname: data.firstname,
-      //     lastname: data.lastname,
-      //     email: data.email,
-      //     password: data.password,
-      //     phone: data.phone,
-      //     role: data.role
-      //   })
-      //   // console.log(items)
-      // ))
-
-      // if (employees) {
-      //   setLoading(false);
-      // }
+      setdeletedUser(true)
     });
   };
 
@@ -108,30 +90,50 @@ export default function Userslist() {
     setShow(false);
   };
 
+
+  const FilterBasedUser = (empArray) => {
+    const filtered = empArray.filter(item => item.role === "User" || item.role === "Admin" ); // Filter based on role
+    console.log(filtered)
+    setUserObject(filtered);
+   // setFilteredData(filtered); // Update state with filtered array
+  };
+
+  
+
   useEffect(() => {
     Getuserdata().then((employees) => {
-      // console.log("The data, ", employees.User[0].firstname)
-      //setUserObject(employees)
-      setUserObject(employees.User);
-
-      //    const items = employees.User.map( (data, index) => (
-
-      //    setUserObject({
-      //     firstname: data.firstname,
-      //     lastname: data.lastname,
-      //     email: data.email,
-      //     password: data.password,
-      //     phone: data.phone,
-      //     role: data.role
-      //   })
-      //   // console.log(items)
-      // ))
-
+      FilterBasedUser(employees.User); 
       if (employees) {
         setLoading(false);
       }
     });
-  }, [loading]);
+  },[loading, deletedUser,show]);
+
+
+  // useEffect(() => {
+  //   Getuserdata().then((employees) => {
+  //     // console.log("The data, ", employees.User[0].firstname)
+  //     //setUserObject(employees)
+  //     setUserObject(employees.User);
+
+  //     //    const items = employees.User.map( (data, index) => (
+
+  //     //    setUserObject({
+  //     //     firstname: data.firstname,
+  //     //     lastname: data.lastname,
+  //     //     email: data.email,
+  //     //     password: data.password,
+  //     //     phone: data.phone,
+  //     //     role: data.role
+  //     //   })
+  //     //   // console.log(items)
+  //     // ))
+
+  //     if (employees) {
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, [loading, deletedUser]);
 
   //   function HandleDeleteButton(event, someParameter){
   //     //do with event
@@ -196,7 +198,7 @@ export default function Userslist() {
                 >
                   Phone
                 </StyledTableCell>
-                {/* <StyledTableCell
+                <StyledTableCell
                   style={{
                     backgroundColor: "grey",
                     color: "white",
@@ -204,7 +206,7 @@ export default function Userslist() {
                   }}
                 >
                   Role
-                </StyledTableCell> */}
+                </StyledTableCell>
                 <StyledTableCell
                   style={{
                     backgroundColor: "grey",
@@ -264,9 +266,9 @@ export default function Userslist() {
                     <StyledTableCell style={{ textAlign: "center" }}>
                       {row.phone}
                     </StyledTableCell>
-                    {/* <StyledTableCell style={{ textAlign: "center" }}>
+                    <StyledTableCell style={{ textAlign: "center" }}>
                       {row.role}
-                    </StyledTableCell> */}
+                    </StyledTableCell>
                     <StyledTableCell style={{ textAlign: "center" }}>
                       {row.address}
                     </StyledTableCell>

@@ -1,82 +1,3 @@
-// import * as React from 'react';
-// import { styled } from '@mui/material/styles';
-// import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-// import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-// import TableContainer from '@mui/material/TableContainer';
-// import TableHead from '@mui/material/TableHead';
-// import TableRow from '@mui/material/TableRow';
-// import Paper from '@mui/material/Paper';
-
-// const StyledTableCell = styled(TableCell)(({ theme }) => ({
-//   [`&.${tableCellClasses.body}`]: {
-//     fontSize: 14,
-
-//   },
-
-// }));
-
-// const StyledTableRow = styled(TableRow)(({ theme }) => ({
-//   // '&:nth-of-type(odd)': {
-//   //   backgroundColor: theme.palette.action.hover,
-//   // },
-//   // hide last border
-//   '&:last-child td, &:last-child th': {
-//     border: 0,
-//   },
-// }));
-
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
-
-// export default function Employeelist() {
-//   return (
-//     <TableContainer style={{width:'1000px', marginLeft:'75px'}} component={Paper}>
-//       <Table  aria-label="customized table">
-//         <TableHead>
-//           <TableRow>
-//           <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}} >Sl No </StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}} >Employee Name </StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}} >Employee ID </StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}} >Email</StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}} >Phone</StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}}>Type</StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}}>Delete</StyledTableCell>
-//             <StyledTableCell style={{backgroundColor:'grey', color:'white', textAlign:'center'}}>Update</StyledTableCell>
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//           {rows.map((row) => (
-//             <StyledTableRow  key={row.name}>
-//               <StyledTableCell style={{textAlign:'center'}} component="th" scope="row">
-//                1
-//               </StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}} component="th" scope="row">
-//                 {row.name}
-//               </StyledTableCell>
-//               <StyledTableCell  style={{textAlign:'center'}} >{row.calories}</StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}} >{row.fat}</StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}}>{row.carbs}</StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}}>{row.protein}</StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}}><button style={{backgroundColor:'skyblue'}}>Update</button></StyledTableCell>
-//               <StyledTableCell style={{textAlign:'center'}}><button style={{backgroundColor:'red', color:'white'}}>Delete</button></StyledTableCell>
-//             </StyledTableRow>
-//           ))}
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-// }
-
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -135,6 +56,7 @@ export default function Employeelist() {
 
   const [show, setShow] = useState(false);
   const [selectedData, setSelectedData] = useState([]);
+  const [deletedEmployee, setdeletedEmployee] = useState(false)
 
   const handleEditEmployeeDetails = (event, someParameter) => {
     setSelectedData(someParameter);
@@ -143,12 +65,28 @@ export default function Employeelist() {
 
   const HandleDeleteEmployeeButton = (event, someParameter) => {
     // alert(someParameter);
-    deleteAPiCallInEmployee();
+    deleteAPiCallInEmployee(someParameter);
   };
 
-  const deleteAPiCallInEmployee = () => {
-    Deleteuserdata("Id pass here").then((employees) => {
+
+  const refreshEmployeeonceupdated = (newData) => {
+    console.log("The refresh value is", newData);
+    if (newData) {
+      Getuserdata().then((employees) => {
+        FilterBasedOnEmployee(employees.User); 
+        if (employees) {
+          setLoading(false);
+        }
+      });
+    } else {
+      alert("Do not call refresh api")
+    }
+  };
+
+  const deleteAPiCallInEmployee = (someParameter) => {
+    Deleteuserdata(someParameter).then((employees) => {
       console.log("The data");
+      setdeletedEmployee(true)
       //setUserObject(employees)
       //setUserObject(employees.User);
 
@@ -175,30 +113,23 @@ export default function Employeelist() {
     setShow(false);
   };
 
+   const FilterBasedOnEmployee = (empArray) => {
+    const filtered = empArray.filter(item => item.role === "Employee"); // Filter based on role
+    console.log(filtered)
+    setUserObject(filtered);
+   // setFilteredData(filtered); // Update state with filtered array
+  };
+
+  
+
   useEffect(() => {
     Getuserdata().then((employees) => {
-      // console.log("The data, ", employees.User[0].firstname)
-      //setUserObject(employees)
-      setUserObject(employees.User);
-
-      //    const items = employees.User.map( (data, index) => (
-
-      //    setUserObject({
-      //     firstname: data.firstname,
-      //     lastname: data.lastname,
-      //     email: data.email,
-      //     password: data.password,
-      //     phone: data.phone,
-      //     role: data.role
-      //   })
-      //   // console.log(items)
-      // ))
-
+      FilterBasedOnEmployee(employees.User); 
       if (employees) {
         setLoading(false);
       }
     });
-  }, [loading]);
+  },[deletedEmployee, loading, show]);
 
   //   function HandleDeleteButton(event, someParameter){
   //     //do with event
@@ -369,7 +300,7 @@ export default function Employeelist() {
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
-          {show && <Edituser details={selectedData} handleClose={hideModal} />}
+          {show && <Edituser details={selectedData} handleClose={hideModal} refresh_data_callback={refreshEmployeeonceupdated} />}
         </TableContainer>
       )}
     </div>

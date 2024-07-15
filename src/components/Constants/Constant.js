@@ -68,13 +68,7 @@ export const Getuserdata = async () => {
 };
 
 export const Deleteuserdata = async (id) => {
-  alert(`The data id is : ${id}`);
-  // const res = NetworkDelete(`${DeleteUserData}/${id}`)
-  // return res
-
-
-   // let data = { name, email, mobile };
-    // console.warn(data);
+ 
     fetch(`${APIKey}${DeleteUserData}/${id}`, {
       method: "DELETE",
       headers: {
@@ -85,7 +79,7 @@ export const Deleteuserdata = async (id) => {
     }).then((resp) => {
       // console.warn("resp",resp);;
       resp.json().then((result) => {
-        console.warn("result", result);
+        alert(`User Deleted Successfully`);
       });
     });
   
