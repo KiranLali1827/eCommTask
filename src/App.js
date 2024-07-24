@@ -19,6 +19,8 @@ import Calendardash from "./pages/Calendar/Calendardash";
 import Analyticsdashboard from "./pages/Analytics/Analyticsdashboard";
 import Visitordashboard from "./pages/Visitors/Visitordashboard";
 import Testing from './components/Testingclass/Testing'
+import ProductDetails from "./pages/Products/ProductDetails";
+
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
           <Route path="/Calendardash" element={<Calendardash />} exact />
           <Route path="/Analyticsdashboard" element={<Analyticsdashboard />} exact />
           <Route path="/Visitordashboard" element={<Visitordashboard />} exact />
+          <Route path="/ProductDetails" element={<ProductDetails />} exact />
+          
           {/* Testinng Class */}
           <Route path="/Testing" element={<Testing />} exact />
           

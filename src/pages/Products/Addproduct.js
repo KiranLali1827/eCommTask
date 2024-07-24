@@ -155,13 +155,13 @@ const Addproduct = () => {
           <label htmlFor="images" className="form-label">Upload Product Images:</label>
           <div className="image-upload-container">
             <button type="button" className="add-image-button" onClick={handleAddImage}>Choose Image</button>
-            <div className="image-preview-container">
+            <div className="image-preview-container" >
               {images.map((image, index) => (
                 <div key={index} className="image-preview">
-                  <img
+                  <img 
                     src={URL.createObjectURL(image)}
                     alt={`Image ${index + 1}`}
-                    className="preview-image"
+                    className="preview-image" 
                     onClick={() => handleImageClick(index)}
                   />
                   <button
