@@ -10,8 +10,6 @@ import Dropdown from "./Dropdown";
 import { useState } from "react";
 import { APIKey, checkemailValidOrNot } from "../../components/Constants/Constant";
 // TODO remove, this demo shouldn't need to reset the theme.
-import "../users/Createuser.scss";
-
 const defaultTheme = createTheme();
 
 export default function Createuser() {

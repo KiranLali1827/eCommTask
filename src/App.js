@@ -20,11 +20,15 @@ import Analyticsdashboard from "./pages/Analytics/Analyticsdashboard";
 import Visitordashboard from "./pages/Visitors/Visitordashboard";
 import Testing from './components/Testingclass/Testing'
 import ProductDetails from "./pages/Products/ProductDetails";
-
-
-function App() {
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import { PrimeReactProvider } from 'primereact/api';
+        
+        
+ function App({ Component, pageProps }) {
   return (
-    <Router>
+      <PrimeReactProvider value={{ unstyled: false }}>
+          {/* <Component {...pageProps} /> */}
+          <Router>
       {/* <Navbar /> */}
       {/* <Testing /> */}
       <Routes>
@@ -60,7 +64,53 @@ function App() {
       </Routes>
       {/* <Footer /> */}
     </Router>
+      </PrimeReactProvider>
   );
 }
-
 export default App;
+// function App() {
+//   return (
+//     <PrimeReactProvider>
+    <Router>
+      {/* <Navbar /> */}
+      {/* <Testing /> */}
+      <Routes>
+        {/* <Route path='/' exact component={Dashboard} /> */}
+        <Route>
+          {/* <Route element = {<PrivateComponent />}> */}
+          {/* <Route path="/" element={<Login />} exact /> */}
+          
+          <Route path="/" element={<Home />} exact />
+          <Route path="/users" element={<User />} exact />
+          <Route path="/Signup" element={<Signup />} exact />
+          <Route path="/Createuser" element={<Createuser />} exact />
+          <Route path="/Userslist" element={<Userslist />} exact />
+          <Route path="/Employeelist" element={<Employeelist />} exact />
+          <Route path="/Imageupload" element={<Imageupload />} exact />
+          <Route path="/Addproduct" element={<Addproduct />} exact />
+          <Route path="/Viewproductlist" element={<Viewproductlist />} exact />
+          <Route path="/Createproductsection" element={<Createproductsection />} exact />
+          <Route path="/Productdashborad" element={<Productdashborad />} exact />
+          <Route path="/Order" element={<Order />} exact />
+          <Route path="/Deliverydashboard" element={<Deliverydashboard />} exact />
+          <Route path="/Inventorydashboard" element={<Inventorydashboard />} exact />
+          <Route path="/Invoicedashboard" element={<Invoicedashboard />} exact />
+          <Route path="/Calendardash" element={<Calendardash />} exact />
+          <Route path="/Analyticsdashboard" element={<Analyticsdashboard />} exact />
+          <Route path="/Visitordashboard" element={<Visitordashboard />} exact />
+          <Route path="/ProductDetails" element={<ProductDetails />} exact />
+          
+          {/* Testinng Class */}
+          <Route path="/Testing" element={<Testing />} exact />
+          
+          
+        </Route>
+        <Route path="/Login" element={<Login />} exact />
+      </Routes>
+      {/* <Footer /> */}
+    </Router>
+//     </PrimeReactProvider>
+//   );
+// }
+
+// export default App;

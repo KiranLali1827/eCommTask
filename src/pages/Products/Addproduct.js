@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 // import React from "react";
 // import "./Addproduct.scss";
 // import Createproductsection from "./Createproductsection";
@@ -182,7 +183,7 @@ const Addproduct = () => {
           </div>
         )}
         <div className="form-group">
-          <label htmlFor="heading" className="form-label">Heading:</label>
+          <label htmlFor="heading" className="form-label">Product name:</label>
           <input
             type="text"
             id="heading"
@@ -193,7 +194,7 @@ const Addproduct = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="specifications" className="form-label">Specifications:</label>
+          <label htmlFor="specifications" className="form-label">Product Description:</label>
           <textarea
             id="specifications"
             value={specifications}
@@ -201,6 +202,42 @@ const Addproduct = () => {
             className="form-textarea"
             required
           />
+        </div>
+        <div className="form-group">
+         
+          <label htmlFor="specifications" className="form-label">Specification:</label>
+          {/* <button>Add Specification</button> */}
+
+          <textarea
+            id="specifications"
+            value={specifications}
+            onChange={(e) => setSpecifications(e.target.value)}
+            className="specification-style"
+            placeholder='Size'
+            required
+          />
+           <textare
+            id="specifications"s
+            value={specifications}
+            onChange={(e) => setSpecifications(e.target.value)}
+            className="specification-style"
+            required
+          />
+           <textarea
+            id="specifications"
+            value={specifications}
+            onChange={(e) => setSpecifications(e.target.value)}
+            className="specification-style"
+            required
+          />
+           <textarea
+            id="specifications"
+            value={specifications}
+            onChange={(e) => setSpecifications(e.target.value)}
+            className="specification-style"
+            required
+          />
+          
         </div>
         <div className="form-group">
           <label htmlFor="sku" className="form-label">SKU:</label>

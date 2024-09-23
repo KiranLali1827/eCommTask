@@ -1,0 +1,22 @@
+.test {
+  margin-left: 50px;
+  margin-right: 50px;
+  height: 26rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Align buttons to the left and right corners */
+  width: 100%; /* Full width container */
+  margin-top: 10px;
+}
+
+.left-button {
+  cursor: pointer;
+  margin-left: 4rem;
+}
+
+.right-button {
+  cursor: pointer;
+  margin-right: 4rem;
+}
