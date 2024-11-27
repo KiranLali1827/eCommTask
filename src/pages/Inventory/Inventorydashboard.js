@@ -9,6 +9,8 @@ import { Button } from '@mui/material'
 import Userlist from '../users/Userslist'
 import { useRef, useState } from 'react'
 import SegmentedControl from '../users/SegmentedControl'
+import InventoryList from './InventoryList'
+import Inventoryhome from './Inventoryhome'
 
 
 
@@ -49,8 +51,8 @@ const Inventorydashboard = () => {
             />
             <p className="selected-item">
             {<div>  
-            {selectedValue1 == "Create Employee"? "Add Product" : ""}
-            {selectedValue1 == "Users"? "view Product": ""} 
+            {selectedValue1 == "Dashoboard"? <Inventoryhome /> : ""}
+            {selectedValue1 == "View Products"? <InventoryList />: ""} 
             {selectedValue1 == "Employee"? "Manage Product" : ""}
             </div>}
            
@@ -60,22 +62,22 @@ const Inventorydashboard = () => {
 
 
 
-          <div className='widgets'>
+          {/* <div className='widgets'>
             <Widget type='users' />
             <Widget type='orders' />
             <Widget type='earnings' />
             <Widget type='balance' />
-          </div>
-          <div className="charts">
-            {/* <Feature /> */}
+          </div> */}
+          {/* <div className="charts">
+            <Feature />
             <div className='chart'> 
             <Inventroyproducts/>
             </div>
            
            
           </div>
-          <br></br>
-          <div className='chart'> 
+          <br></br> */}
+          {/* <div className='chart'> 
           <h3>Added Product List</h3>
             <Userlist />
 
@@ -89,7 +91,7 @@ const Inventorydashboard = () => {
               Save Products
             </Button>
 
-            </div>
+            </div> */}
 
 
 
