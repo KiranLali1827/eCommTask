@@ -1,4 +1,4 @@
-import React from "react";
+import { InputText } from "primereact/inputtext";
 import {
   Box,
   Grid,
@@ -13,7 +13,20 @@ import {
   ListItemText,
 } from "@mui/material";
 import { green, red } from "@mui/material/colors";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+  LineChart,
+  Line,
+} from "recharts";
+import { DataTable } from "primereact/datatable";
+import { Column } from "primereact/column";
+import { useState } from "react";
 
 // Hardcoded data
 const stats = [
@@ -24,6 +37,7 @@ const stats = [
   { label: "Daily Earnings", value: "$95", change: "-2%", positive: false },
   { label: "Products", value: 621, change: "-1%", positive: false },
 ];
+
 
 const activity = [
   {
@@ -43,12 +57,16 @@ const activity = [
   },
 ];
 
+
+
+
 const barData = [
-  { name: "Jan", value: 40 },
-  { name: "Feb", value: 30 },
-  { name: "Mar", value: 50 },
-  { name: "Apr", value: 80 },
-  { name: "May", value: 60 },
+  { Slno: "Jan", Firstname: 40, Lastname: "Test", Email: "My name",Phone: "My name" },
+  { name: "Feb", value: 30, lastname: "Test", firstname: "My name" },
+  { name: "Mar", value: 50, lastname: "Test", firstname: "My name" },
+  { name: "Apr", value: 80, lastname: "Test", firstname: "My name" },
+  { name: "May", value: 60, lastname: "Test", firstname: "My name" },
+  { name: "May", value: 60, lastname: "Test", firstname: "My name" },
 ];
 
 const lineData = [
@@ -59,9 +77,17 @@ const lineData = [
   { name: "May", value: 200 },
 ];
 
+// Alternate row colors
+const rowClass = (data: any, index: number) => {
+  return { "row-white": index % 2 === 0, "row-grey": index % 2 !== 0 };
+};
+
 const Dashboard = () => {
+
+  const [globalFilter, setGlobalFilter] = useState(""); // State for global filter.
+
   return (
-    <Box sx={{ padding: 4, backgroundColor: "#f4f6f8", minHeight: "100vh" }}>
+    <Box sx={{ padding: 4, backgroundColor: "#f4f6f8", minHeight: "auto" }}>
       {/* Header */}
       <Typography variant="h4" sx={{ marginBottom: 4 }}>
         Dashboard
@@ -94,11 +120,99 @@ const Dashboard = () => {
         ))}
       </Grid>
 
-      {/* Development Activity and Charts */}
       <Grid container spacing={3} sx={{ marginTop: 4 }}>
-        {/* Left: Line Chart + Activity */}
+            <Grid item xs={12} md={8}>
+                <Grid container alignItems="center" spacing={2}>
+                    <Grid item xs>
+                        <Typography variant="h6" fontWeight="bold" gutterBottom>
+                            Visitors History
+                        </Typography>
+                    </Grid>
+                    <Grid item>
+                        {/* Global Search Input */}
+                        <span className="p-input-icon-left">
+                            <i className="pi pi-search" />
+                            <InputText
+                                value={globalFilter}
+                                onChange={(e) => setGlobalFilter(e.target.value)}
+                                placeholder="Search..."
+                            />
+                        </span>
+                    </Grid>
+                </Grid>
+
+              <ResponsiveContainer minWidth="150%" height={"auto"}>
+                <div className="card">
+                  <DataTable
+                    value={barData}
+                    paginator
+                    rows={5}
+                    rowsPerPageOptions={[5, 10, 25, 50]}
+                    tableStyle={{ minWidth: "50rem" }}
+                    globalFilter={globalFilter} // Apply the global filter here.
+
+                  >
+                    <Column
+                      field="name"
+                      header="Sl No"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="value"
+                      header="Firstname"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="lastname"
+                      header="Lastname"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="firstname"
+                      header="Email"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="firstname"
+                      header="Phone"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="firstname"
+                      header="Date"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="firstname"
+                      header="CheckIN"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                    <Column
+                      field="firstname"
+                      header="Check Out"
+                      style={{ width: "10%" }}
+                      sortable
+                    ></Column>
+                  </DataTable>
+                </div>
+              </ResponsiveContainer>
+            
+          
+        </Grid>
+      </Grid>
+
+      {/* Development Activity and Charts */}
+      {/* <Grid container spacing={3} sx={{ marginTop: 4 }}>
+       
         <Grid item xs={12} md={8}>
-          {/* Line Chart */}
+         
           <Card>
             <CardContent>
               <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -121,7 +235,6 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Activity Table */}
           <Card sx={{ marginTop: 2 }}>
             <CardContent>
               <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -162,10 +275,10 @@ const Dashboard = () => {
               </List>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid> */}
 
-        {/* Right: Bar Charts */}
-        <Grid item xs={12} md={4}>
+      {/* Right: Bar Charts */}
+      {/* <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
               <Typography variant="h6" fontWeight="bold" gutterBottom>
@@ -199,8 +312,8 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Grid> 
+         </Grid>*/}
     </Box>
   );
 };
