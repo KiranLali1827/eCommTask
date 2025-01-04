@@ -2,7 +2,7 @@
     display: flex;
     .homeContainer {
         flex: 6;
-        background-color: aliceblue;
+        background-color: #f5f6f8;
 
         .widgets, .chart {
             display: flex;
@@ -23,4 +23,230 @@
     flex-direction: column;
   }
   
+
+
+// .datatable-container {
+//     padding: 2rem;
+//     background-color: #ffffff; /* Light background */
+//   }
+  
+//   .table-card {
+//     width: 100%;
+//     border-radius: 8px;
+//   }
+  
+//   .select-year-container {
+//     margin-bottom: 1.5rem;
+//   }
+  
+//   .year-dropdown {
+//     width: 100%; /* Ensure the SelectButton takes up the full width */
+//     display: inline-block;
+//     border-radius: 8px;
+//     cursor: pointer;
+//     padding: 0.5rem 1rem;
+//     font-size: 1rem;
+//     background-color: #f1f1f1;
+//     border: 1px solid #ccc;
+//   }
+  
+//   .year-dropdown .p-selectbutton {
+//     width: 100%; /* Ensures full width on button */
+//     text-align: left; /* Align text to the left */
+//     padding: 0.5rem 1rem;
+//     border-radius: 8px;
+//     background-color: #f1f1f1;
+//     border: 1px solid #ccc;
+//   }
+  
+//   .search-box {
+//     position: relative;
+//     margin-bottom: 1.5rem;
+//   }
+  
+//   .search-input {
+//     width: 100%;
+//     padding: 0.5rem 1rem 0.5rem 3rem; /* Increased padding on the left side */
+//     font-size: 1rem;
+//     border-radius: 8px;
+//     border: 1px solid #ccc;
+//     background: url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat left 12px center; /* Slightly adjust the icon position */
+//     background-size: 20px 20px; /* Icon size */
+//     padding-left: 45px; /* Extra space between the icon and placeholder */
+//   }
+  
+//   .search-icon {
+//     position: absolute;
+//     left: 12px; /* Adjust icon's position */
+//   }
+  
+//   .blockui-loader {
+//     position: relative;
+//     height: 100%; /* Ensure BlockUI takes full height */
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 2rem; /* Add padding for a better appearance */
+//   }
+  
+//   .loader-container {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//   }
+  
+//   .loader-container h3 {
+//     font-size: 1.5rem;
+//     color: #00796b; /* Customize color for the loading text */
+//   }
+  
+
+/* DataTable Container */
+.datatable-container {
+    padding: 2rem;
+    background-color: #ffffff;
+  }
+  
+  /* Table Card */
+  .table-card {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  /* DataTable Header Styling */
+  .p-datatable-header {
+    background-color: #333333; /* Dark Grey */
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem;
+    font-family: 'Roboto', sans-serif; /* Modern Font */
+  }
+  
+  /* Hover Effect for DataTable Rows */
+  .p-datatable tbody tr:hover {
+    background-color: #e0d298 !important; /* Very Light Yellow */
+  }
+  
+  /* DataTable Row Styling */
+  .p-datatable .p-datatable-tbody > tr > td {
+    font-family: 'Roboto', sans-serif; /* Modern Font */
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Customizing DataTable Column Header */
+  .p-datatable .p-datatable-thead > tr > th {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #333333; /* Dark Grey */
+    color: white;
+    position: relative;
+  }
+  
+  /* Sorting Icon Customization */
+  .p-datatable .p-datatable-thead > tr > th .p-sortable-column {
+    color: white !important; /* White sorting icons */
+    display: flex;
+    justify-content: flex-end; /* Right-align the sorting icons */
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Optional: DataTable Borders and Spacing */
+  .p-datatable-gridlines .p-datatable-thead > tr > th,
+  .p-datatable-gridlines .p-datatable-tbody > tr > td {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+  }
+  
+  /* Customize Row Hover */
+  .p-datatable tbody tr:hover {
+    background-color: #fff9c4 !important; /* Very Light Yellow for hover */
+  }
+  
+  .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loader-container h3 {
+    font-size: 1.5rem;
+    color: #00796b;
+  }
+  
+  
+
+  .select-year-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  .year-dropdown {
+    width: 100%; /* Ensure the SelectButton takes up the full width */
+    display: inline-block;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+  }
+  
+  .year-dropdown .p-selectbutton {
+    width: 100%; /* Ensures full width on button */
+    text-align: left; /* Align text to the left */
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+  }
+  
+  .search-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 3rem; /* Increased padding on the left side */
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat left 12px center; /* Slightly adjust the icon position */
+    background-size: 20px 20px; /* Icon size */
+    padding-left: 45px; /* Extra space between the icon and placeholder */
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 12px; /* Adjust icon's position */
+  }
+  
+  .blockui-loader {
+    position: relative;
+    height: 100%; /* Ensure BlockUI takes full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem; /* Add padding for a better appearance */
+  }
+  
+  .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loader-container h3 {
+    font-size: 1.5rem;
+    color: #00796b; /* Customize color for the loading text */
+  }
   

@@ -27,17 +27,17 @@ import {
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { useState } from "react";
+import Dashboardtable from "./Dashboardtable";
 
 // Hardcoded data
 const stats = [
-  { label: "New Tickets", value: 43, change: "+6%", positive: true },
-  { label: "Closed Today", value: 17, change: "-3%", positive: false },
-  { label: "New Replies", value: 7, change: "+9%", positive: true },
-  { label: "Followers", value: "27.3k", change: "+3%", positive: true },
-  { label: "Daily Earnings", value: "$95", change: "-2%", positive: false },
-  { label: "Products", value: 621, change: "-1%", positive: false },
+  { label: "Customers", value: 621, change: "-1%", positive: false },
+  { label: "Total Visors", value: 43, change: "+6%", positive: true },
+  { label: "Today vistors", value: 17, change: "-3%", positive: false },
+  { label: "Youtube", value: 7, change: "+9%", positive: true },
+  { label: "Facebook", value: "27.3k", change: "+3%", positive: true },
+  { label: "Friends", value: "$95", change: "-2%", positive: false },
 ];
-
 
 const activity = [
   {
@@ -57,16 +57,69 @@ const activity = [
   },
 ];
 
-
-
-
+// eslint-disable-next-line no-sparse-arrays
 const barData = [
-  { Slno: "Jan", Firstname: 40, Lastname: "Test", Email: "My name",Phone: "My name" },
-  { name: "Feb", value: 30, lastname: "Test", firstname: "My name" },
-  { name: "Mar", value: 50, lastname: "Test", firstname: "My name" },
-  { name: "Apr", value: 80, lastname: "Test", firstname: "My name" },
-  { name: "May", value: 60, lastname: "Test", firstname: "My name" },
-  { name: "May", value: 60, lastname: "Test", firstname: "My name" },
+  {
+    Slno: "1",
+    Firstname: "Kiran",
+    Lastname: "Lali",
+    Email: "Kiran@gmail.com",
+    Phone: "+91 8877664433",
+    Date: "2024-12-30",
+    Checkin: "10AM",
+    Checkout: "11AM",
+  },
+  {
+    Slno: "2",
+    Firstname: "Sakshi",
+    Lastname: "Lali",
+    Email: "Sakshigmail.com",
+    Phone: "+91 9877664433",
+    Date: "2024-10-02",
+    Checkin: "12PM",
+    Checkout: "11AM",
+  },
+  ,
+  {
+    Slno: "3",
+    Firstname: "Huduga",
+    Lastname: "Hiremath",
+    Email: "Huduga@gmail.com",
+    Phone: "+91 7677664433",
+    Date: "2024-12-05",
+    Checkin: "10AM",
+    Checkout: "5PM",
+  },
+  {
+    Slno: "4",
+    Firstname: "Ganga",
+    Lastname: "Venkatgiri",
+    Email: "Gangagmail.com",
+    Phone: "+91 8877664433",
+    Date: "2024-11-01",
+    Checkin: "9AM",
+    Checkout: "6PM",
+  },
+  {
+    Slno: "5",
+    Firstname: "Pritam",
+    Lastname: "LNU",
+    Email: "Pritamgmail.com",
+    Phone: "+91 8877664433",
+    Date: "2024-12-10",
+    Checkin: "10AM",
+    Checkout: "11AM",
+  },
+  {
+    Slno: "6",
+    Firstname: "Nandini",
+    Lastname: "LNU",
+    Email: "Nandhinigmail.com",
+    Phone: "+91 8877664433",
+    Date: "2024-09-06",
+    Checkin: "6AM",
+    Checkout: "11AM",
+  },
 ];
 
 const lineData = [
@@ -77,13 +130,7 @@ const lineData = [
   { name: "May", value: 200 },
 ];
 
-// Alternate row colors
-const rowClass = (data: any, index: number) => {
-  return { "row-white": index % 2 === 0, "row-grey": index % 2 !== 0 };
-};
-
 const Dashboard = () => {
-
   const [globalFilter, setGlobalFilter] = useState(""); // State for global filter.
 
   return (
@@ -112,208 +159,46 @@ const Dashboard = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  {stat.change}
+                  {/* {stat.change} */}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
-
-      <Grid container spacing={3} sx={{ marginTop: 4 }}>
-            <Grid item xs={12} md={8}>
-                <Grid container alignItems="center" spacing={2}>
-                    <Grid item xs>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                            Visitors History
-                        </Typography>
-                    </Grid>
-                    <Grid item>
-                        {/* Global Search Input */}
-                        <span className="p-input-icon-left">
-                            <i className="pi pi-search" />
-                            <InputText
-                                value={globalFilter}
-                                onChange={(e) => setGlobalFilter(e.target.value)}
-                                placeholder="Search..."
-                            />
-                        </span>
-                    </Grid>
-                </Grid>
-
-              <ResponsiveContainer minWidth="150%" height={"auto"}>
-                <div className="card">
-                  <DataTable
-                    value={barData}
-                    paginator
-                    rows={5}
-                    rowsPerPageOptions={[5, 10, 25, 50]}
-                    tableStyle={{ minWidth: "50rem" }}
-                    globalFilter={globalFilter} // Apply the global filter here.
-
-                  >
-                    <Column
-                      field="name"
-                      header="Sl No"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="value"
-                      header="Firstname"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="lastname"
-                      header="Lastname"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="firstname"
-                      header="Email"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="firstname"
-                      header="Phone"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="firstname"
-                      header="Date"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="firstname"
-                      header="CheckIN"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                    <Column
-                      field="firstname"
-                      header="Check Out"
-                      style={{ width: "10%" }}
-                      sortable
-                    ></Column>
-                  </DataTable>
-                </div>
-              </ResponsiveContainer>
-            
-          
-        </Grid>
+      <br></br>
+      <br></br>
+      <Grid item xs={12} md={8}>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          Sales Activity
+        </Typography>
+        <Card>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart data={lineData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="grey"
+                  strokeWidth={2}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </CardContent>
+        </Card>
       </Grid>
+      <br></br>
 
-      {/* Development Activity and Charts */}
-      {/* <Grid container spacing={3} sx={{ marginTop: 4 }}>
-       
-        <Grid item xs={12} md={8}>
-         
-          <Card>
-            <CardContent>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                Development Activity
-              </Typography>
-              <ResponsiveContainer width="100%" height={200}>
-                <LineChart data={lineData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Line
-                    type="monotone"
-                    dataKey="value"
-                    stroke="#1976d2"
-                    strokeWidth={2}
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card sx={{ marginTop: 2 }}>
-            <CardContent>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                Activity
-              </Typography>
-              <List>
-                {activity.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <ListItem>
-                      <ListItemAvatar>
-                        <Avatar>{item.user.charAt(0)}</Avatar>
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={item.user}
-                        secondary={
-                          <>
-                            <Typography
-                              component="span"
-                              variant="body2"
-                              color="textPrimary"
-                            >
-                              {item.commit}
-                            </Typography>
-                            <Typography
-                              component="span"
-                              variant="body2"
-                              sx={{ marginLeft: 1 }}
-                            >
-                              {item.date}
-                            </Typography>
-                          </>
-                        }
-                      />
-                    </ListItem>
-                    {index < activity.length - 1 && <Divider />}
-                  </React.Fragment>
-                ))}
-              </List>
-            </CardContent>
-          </Card>
-        </Grid> */}
-
-      {/* Right: Bar Charts */}
-      {/* <Grid item xs={12} md={4}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                Chart Title
-              </Typography>
-              <ResponsiveContainer width="100%" height={200}>
-                <BarChart data={barData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#1976d2" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-
-          <Card sx={{ marginTop: 2 }}>
-            <CardContent>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
-                Chart Title
-              </Typography>
-              <ResponsiveContainer width="100%" height={200}>
-                <BarChart data={barData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="value" fill="#1976d2" />
-                </BarChart>
-              </ResponsiveContainer>
-            </CardContent>
-          </Card>
-        </Grid> 
-         </Grid>*/}
+      <Grid item xs={12} md={8}>
+        <Typography variant="h6" fontWeight="bold" gutterBottom>
+          Visitors Data
+        </Typography>
+        <Dashboardtable />
+      </Grid>
     </Box>
   );
 };

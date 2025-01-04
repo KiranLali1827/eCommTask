@@ -136,7 +136,7 @@ class InvoiceForm extends React.Component {
         <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
+          {/* <Navbar /> */}
          
     
     <Form onSubmit={this.openModal}>

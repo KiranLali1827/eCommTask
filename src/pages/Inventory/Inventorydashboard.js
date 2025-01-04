@@ -22,7 +22,7 @@ const Inventorydashboard = () => {
     <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
+          {/* <Navbar /> */}
 
 
           <div className="container">

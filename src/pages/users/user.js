@@ -18,7 +18,7 @@ const User = () => {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
+          {/* <Navbar /> */}
           <div className="container">
             <SegmentedControl
               name="group-1"

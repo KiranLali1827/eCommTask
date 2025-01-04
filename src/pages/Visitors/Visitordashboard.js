@@ -9,7 +9,7 @@ function Visitordashboard() {
     <div className="home">
       <Sidebar />
       <div className="homeContainer">
-        <Navbar />
+        {/* <Navbar /> */}
         <h1>Visitordashboard</h1>
         <StepperForm />
       </div>

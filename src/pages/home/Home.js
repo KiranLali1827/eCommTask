@@ -12,7 +12,7 @@ const Home = () => {
     <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
+          {/* <Navbar /> */}
           {/* <div className='widgets'>
             <Widget type='users' />
             <Widget type='orders' />

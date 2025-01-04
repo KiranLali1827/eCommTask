@@ -20,7 +20,7 @@ export default function Calendardash() {
       <div className="home">
         <Sidebar />
         <div className="homeContainer">
-          <Navbar />
+          {/* <Navbar /> */}
           <Button>Add</Button>
           <FullCalendar
             defaultView="dayGridMonth"
