@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { API_BASE_URL, API_KEY } from './apiConfig';
+
 import {
   Box,
   Button,
@@ -50,17 +52,54 @@ const StepperForm = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
+
+
+  const triggerOTP = async (phoneNumber) => {
+    const url = `${API_BASE_URL}/${API_KEY}/SMS/${phoneNumber}/AUTOGEN3/TestUs`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log('OTP Triggered:', data);
+        return data;
+    } catch (error) {
+        console.error('Error triggering OTP:', error);
+        throw error;
+    }
+};
+
   const handleSubmit = () => {
-    const formData = {
-      phoneNumber,
-      otp: otp.join(""),
-      product: selectedProduct,
-      service: selectedService,
-      feedback,
-    };
-    console.log("Form Data Submitted:", formData);
-    alert("Form Submitted! Check console for details.");
+    // const formData = {
+    //   phoneNumber,
+    //   otp: otp.join(""),
+    //   product: selectedProduct,
+    //   service: selectedService,
+    //   feedback,
+    // };
+    // console.log("Form Data Submitted:", formData);
+    // alert("Form Submitted! Check console for details.");
+    handleTriggerOTP()
   };
+
+
+  
+
+const handleTriggerOTP = () => {
+  const phoneNumber = '7795671546'; // Replace with the actual phone number
+  triggerOTP(phoneNumber);
+};
+
+
 
   const handleOtpChange = (value, index) => {
     if (/^\d?$/.test(value)) {

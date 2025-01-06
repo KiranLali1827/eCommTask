@@ -144,7 +144,7 @@
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
-    background-color: #333333; /* Dark Grey */
+    background-color: rgb(126, 130, 131); /* Dark Grey */
     color: white;
     position: relative;
   }
@@ -182,6 +182,20 @@
     color: #00796b;
   }
   
+  /* Sorting Icon Customization */
+.p-datatable .p-datatable-thead > tr > th .p-sortable-column {
+    color: white !important; /* White sorting icons */
+    display: flex;
+    justify-content: flex-end; /* Right-align the sorting icons */
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Sorting Icon Color in Column Header */
+  .p-datatable .p-datatable-thead .p-sortable-column .p-sortable-column-icon {
+    color: white !important; /* Ensure sorting icon is white */
+  }
+  
   
 
   .select-year-container {
@@ -199,13 +213,19 @@
     border: 1px solid #ccc;
   }
   
-  .year-dropdown .p-selectbutton {
-    width: 100%; /* Ensures full width on button */
-    text-align: left; /* Align text to the left */
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    background-color: #f1f1f1;
+  
+  /* Default Background Color for Year Dropdown */
+.year-dropdown .p-selectbutton {
+    background-color: #f1f1f1; /* Default light gray color */
     border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Background Color for Year Dropdown after Selection */
+  .year-dropdown .p-selectbutton.p-highlight {
+    background-color: rgb(126, 130, 131) !important; /* Change background to the desired color after selection */
+    color: white; /* Optional: change text color to white for better contrast */
   }
   
   .search-box {
@@ -250,3 +270,223 @@
     color: #00796b; /* Customize color for the loading text */
   }
   
+
+
+  /* Overall Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* Each Section */
+.section {
+  flex: 1; /* Equal width for both sections */
+  background-color: #ffffff; /* White background for sections */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* For the arrow positioning */
+  cursor: pointer; /* Indicate clickability */
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+.section.active {
+  border: 2px solid black; /* Black border when active */
+}
+
+/* Section Title */
+.section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Row of Cards */
+.card-row {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+/* Individual Card Styling */
+.card-container {
+  flex: 1;
+  text-align: center;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.card-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  margin: 0;
+}
+
+/* Arrow Indicator */
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) { /* For tablets */
+  .dashboard-container {
+    flex-direction: column; /* Stack sections vertically */
+  }
+
+  .section {
+    flex: none; /* Reset the flex property */
+    width: 100%; /* Full width for each section */
+  }
+
+  .card-row {
+    flex-wrap: wrap; /* Allow cards to wrap onto the next line */
+    justify-content: center; /* Center the cards */
+  }
+
+  .card-container {
+    flex: 1 1 calc(50% - 10px); /* Adjust cards to take up 50% width */
+    max-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) { /* For mobile devices */
+  .card-container {
+    flex: 1 1 100%; /* Each card takes full width */
+    max-width: 100%;
+  }
+}
+
+
+
+.analytics-dashboard-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Dropdown Section */
+.analytics-dropdown-container {
+  margin-bottom: 20px;
+}
+
+.analytics-dropdown-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Indicative Count Section */
+.analytics-indicative-count-container {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.analytics-indicative-count-container h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Flexible Row for Indicative Items */
+.analytics-indicative-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.analytics-indicative-item {
+  flex: 1 1 calc(25% - 15px); /* Four items per row on large screens */
+  background: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.analytics-indicative-item span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.analytics-indicative-item h4 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+/* Chart Container */
+.analytics-chart-container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .analytics-indicative-item {
+    flex: 1 1 calc(33.33% - 15px); /* Three items per row on medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .analytics-indicative-item {
+    flex: 1 1 calc(50% - 15px); /* Two items per row on small screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .analytics-indicative-item {
+    flex: 1 1 100%; /* One item per row on extra-small screens */
+  }
+
+  .analytics-dropdown-container {
+    margin-bottom: 15px;
+  }
+
+  .analytics-chart-container {
+    padding: 15px;
+  }
+
+  .analytics-indicative-count-container {
+    padding: 10px;
+  }
+
+  .analytics-indicative-count-container h3 {
+    font-size: 16px;
+  }
+
+  .analytics-indicative-item span {
+    font-size: 12px;
+  }
+
+  .analytics-indicative-item h4 {
+    font-size: 18px;
+  }
+}
