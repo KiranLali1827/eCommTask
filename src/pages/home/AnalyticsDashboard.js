@@ -94,7 +94,7 @@ const AnalyticsDashboard = () => {
   return (
     <div className="datatable-container">
       {/* Dropdown */}
-      <div className="analytics-dropdown-container">
+      {/* <div className="analytics-dropdown-container">
         <label>Select Graph Type:</label>
         <Dropdown
           value={selectedGraph}
@@ -102,7 +102,7 @@ const AnalyticsDashboard = () => {
           onChange={(e) => setSelectedGraph(e.value)}
           placeholder="Select Graph Type"
         />
-      </div>
+      </div> */}
 
       {/* Indicative Count */}
       <div className="analytics-indicative-count-container">
