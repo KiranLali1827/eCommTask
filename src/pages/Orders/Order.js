@@ -49,22 +49,11 @@ const Order = () => {
                     ref: useRef(),
                 }
               ]}
-              
             />
             <p className="selected-item">
-            {<div>  
-            {selectedValue1 == "All Orders"? "All Orders" : ""}
-            {selectedValue1 == "In Progress"? "In Progress": ""} 
-            {selectedValue1 == "In Transist"? "In Transist" : ""}
-            {selectedValue1 == "Delivered"? "Delivered" : ""}
-            {selectedValue1 == "New Orders"? "New Orders" : ""}
-            
-            </div>}
-           
+              {selectedValue1}
             </p>
-
           </div>
-        
         </div>
       </div>
     </div>

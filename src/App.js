@@ -59,7 +59,6 @@ import "primeicons/primeicons.css"; // PrimeIcons
           <Route path="/Analyticsdashboard" element={<Analyticsdashboard />} exact />
           <Route path="/Visitordashboard" element={<Visitordashboard />} exact />
           <Route path="/ProductDetails" element={<ProductDetails />} exact />
-          
           {/* Testinng Class */}
           <Route path="/Testing" element={<Testing />} exact />
           
